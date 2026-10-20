@@ -8,7 +8,7 @@ public sealed partial class CCVars
     ///     Whether gas differences will move entities.
     /// </summary>
     public static readonly CVarDef<bool> SpaceWind =
-        CVarDef.Create("atmos.space_wind", false, CVar.SERVERONLY);
+        CVarDef.Create("atmos.space_wind", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Divisor from maxForce (pressureDifference * 2.25f) to force applied on objects.
@@ -35,6 +35,28 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<float> SpaceWindMaxPushForce =
         CVarDef.Create("atmos.space_wind_max_push_force", 20f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Multiplier on the wind force when deciding whether an object caught in explosive depressurization
+    ///     gets moved at all. At 1 only the flow right at a breach can move anything; at the default even the
+    ///     last trickle of air leaving the far end of the room grabs things. Does not change how hard objects
+    ///     are pushed, and has no effect on ordinary room-to-room equalization.
+    /// </summary>
+    public static readonly CVarDef<float> SpaceWindForceMultiplier =
+        CVarDef.Create("atmos.space_wind_force_multiplier", 32f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     Multiplier on how hard explosive depressurization pushes objects toward the breach.
+    ///     Still limited by <see cref="SpaceWindMaxVelocity"/>.
+    /// </summary>
+    public static readonly CVarDef<float> SpaceWindDepressurizationPushMultiplier =
+        CVarDef.Create("atmos.space_wind_depressurization_push_multiplier", 6f, CVar.SERVERONLY);
+
+    /// <summary>
+    ///     How long mobs caught by space wind are knocked down, in seconds. 0 disables the knockdown.
+    /// </summary>
+    public static readonly CVarDef<float> SpaceWindKnockdownTime =
+        CVarDef.Create("atmos.space_wind_knockdown_time", 2f, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether monstermos tile equalization is enabled.

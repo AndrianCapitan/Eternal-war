@@ -1,0 +1,9 @@
+game-hud-open-escape-menu-button-tooltip = Открыть меню.
+game-hud-open-guide-menu-button-tooltip = Открыть руководство.
+game-hud-open-character-menu-button-tooltip = Открыть меню персонажа.
+game-hud-open-emotes-menu-button-tooltip = Открыть меню эмоций.
+game-hud-open-inventory-menu-button-tooltip = Открыть инвентарь.
+game-hud-open-crafting-menu-button-tooltip = Открыть меню крафта.
+game-hud-open-actions-menu-button-tooltip = Открыть меню действий.
+game-hud-open-admin-menu-button-tooltip = Открыть админ-меню.
+game-hud-open-sandbox-menu-button-tooltip = Открыть меню песочницы.

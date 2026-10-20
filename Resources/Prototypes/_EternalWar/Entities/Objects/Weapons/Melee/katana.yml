@@ -1,0 +1,13 @@
+- type: entity
+  name: medieval katana
+  parent: Katana
+  id: MedievalKatana
+  description: A blade folded from tamahagane steel by a master smith of a bygone era. Heavier and sharper than its plasteel imitations.
+  components:
+  - type: MeleeWeapon
+    attackRate: 0.9
+    damage:
+      types:
+        Slash: 19
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg

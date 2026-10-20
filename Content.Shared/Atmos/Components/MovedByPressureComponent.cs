@@ -33,5 +33,17 @@ public sealed partial class MovedByPressureComponent : Component
     /// </summary>
     [DataField]
     public HashSet<string> TableLayerRemoved = new();
+
+    /// <summary>
+    /// Original restitution of fixtures we made unbouncy while space wind carries the entity, so it can be restored.
+    /// </summary>
+    [DataField]
+    public Dictionary<string, float> RemovedRestitution = new();
+
+    /// <summary>
+    /// True while space wind has lifted this entity off the ground, so we know to put it back down.
+    /// </summary>
+    [ViewVariables]
+    public bool LiftedByPressure;
 }
 
