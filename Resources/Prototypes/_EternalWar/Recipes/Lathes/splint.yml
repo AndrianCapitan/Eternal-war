@@ -1,0 +1,7 @@
+- type: latheRecipe
+  id: Splint
+  result: Splint
+  completetime: 2
+  materials:
+    Steel: 50
+    Cloth: 100

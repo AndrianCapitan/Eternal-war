@@ -82,8 +82,9 @@ namespace Content.Shared.Movement.Components
         public const float SprintingSoundModifier = 3.5f;
         public const float WalkingSoundModifier = 1.5f;
 
+        // Eternal War: walking is the default, the Walk key (Shift) makes the mob run
         [ViewVariables]
-        public bool Sprinting => (HeldMoveButtons & MoveButtons.Walk) == 0x0;
+        public bool Sprinting => (HeldMoveButtons & MoveButtons.Walk) != 0x0;
 
         [ViewVariables(VVAccess.ReadWrite)]
         public bool CanMove = true;

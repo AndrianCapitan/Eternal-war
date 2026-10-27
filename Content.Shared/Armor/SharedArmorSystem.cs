@@ -1,3 +1,4 @@
+using Content.Shared._EternalWar.BodyZones;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
@@ -15,6 +16,7 @@ namespace Content.Shared.Armor;
 public abstract partial class SharedArmorSystem : EntitySystem
 {
     [Dependency] private ExamineSystemShared _examine = default!;
+    [Dependency] private SharedBodyZonesSystem _bodyZones = default!; // Eternal War
 
     /// <inheritdoc />
     public override void Initialize()
@@ -48,7 +50,15 @@ public abstract partial class SharedArmorSystem : EntitySystem
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
-        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, component.Modifiers);
+        // Eternal War: armor only protects the body zones it covers.
+        var coverage = _bodyZones.GetArmorCoverage(args.Owner, uid);
+        if (coverage <= 0f)
+            return;
+
+        var modified = DamageSpecifier.ApplyModifierSet(args.Args.Damage, component.Modifiers);
+        args.Args.Damage = coverage >= 1f
+            ? modified
+            : args.Args.Damage + (modified - args.Args.Damage) * coverage;
     }
 
     private void OnBorgDamageModify(EntityUid uid, ArmorComponent component,

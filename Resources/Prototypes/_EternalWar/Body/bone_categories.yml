@@ -1,0 +1,53 @@
+- type: organCategory
+  id: BoneSkull
+
+- type: organCategory
+  id: BoneJaw
+
+- type: organCategory
+  id: BoneSpineThoracic
+
+- type: organCategory
+  id: BoneRibs
+
+- type: organCategory
+  id: BoneSpineLumbar
+
+- type: organCategory
+  id: BonePelvis
+
+- type: organCategory
+  id: BoneHumerusLeft
+
+- type: organCategory
+  id: BoneHumerusRight
+
+- type: organCategory
+  id: BoneForearmLeft
+
+- type: organCategory
+  id: BoneForearmRight
+
+- type: organCategory
+  id: BoneHandLeft
+
+- type: organCategory
+  id: BoneHandRight
+
+- type: organCategory
+  id: BoneFemurLeft
+
+- type: organCategory
+  id: BoneFemurRight
+
+- type: organCategory
+  id: BoneShinLeft
+
+- type: organCategory
+  id: BoneShinRight
+
+- type: organCategory
+  id: BoneFootLeft
+
+- type: organCategory
+  id: BoneFootRight

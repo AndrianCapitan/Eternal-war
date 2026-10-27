@@ -1,0 +1,9 @@
+# Alerts of the organs at work (OrganFunctionsComponent).
+
+- type: alert
+  id: EternalWarAppendicitis
+  icons:
+  - sprite: /Textures/_EternalWar/Interface/Alerts/appendicitis.rsi
+    state: appendicitis
+  name: alerts-eternal-war-appendicitis-name
+  description: alerts-eternal-war-appendicitis-desc

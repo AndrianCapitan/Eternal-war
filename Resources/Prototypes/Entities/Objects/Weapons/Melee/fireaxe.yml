@@ -24,6 +24,8 @@
         Structural: 3
     soundHit:
       collection: MetalThud
+  - type: LimbSever # Eternal War: a chance to cut a limb off in one blow
+    chance: 0.15
   - type: Wieldable
   - type: IncreaseDamageOnWield
     damage:

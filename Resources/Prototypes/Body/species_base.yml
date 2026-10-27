@@ -17,6 +17,15 @@
   id: BaseSpeciesMobNoCrawl
   save: false
   components:
+  # Eternal War: health split between body zones, aiming at a zone
+  - type: BodyZones
+  - type: Targeting
+  # Eternal War: blood carries oxygen from the lungs to every zone; the brain suffocates without it
+  - type: Circulation
+  # Eternal War: walking through puddles leaves footprints
+  - type: Footprints
+  # Eternal War: running (Shift) costs stamina, a little food and more water
+  - type: SprintCost
   - type: DamageVisuals
     thresholds: [ 10, 20, 30, 50, 70, 100 ]
     targetLayers:
@@ -222,13 +231,14 @@
     spawned:
     - id: FoodMeat
       amount: 5
+  # Eternal War: suffocation damage is dealt by Circulation, when the brain runs out of oxygen.
   - type: Respirator
     damage:
       types:
-        Asphyxiation: 1.0
+        Asphyxiation: 0
     damageRecovery:
       types:
-        Asphyxiation: -1.0
+        Asphyxiation: 0
   - type: FireVisuals
     alternateState: Standing
   - type: StunVisuals

@@ -1,3 +1,4 @@
+using Content.Shared._EternalWar.Input;
 using Content.Shared.Input;
 using Robust.Shared.Input;
 
@@ -116,6 +117,8 @@ namespace Content.Client.Input
                 aghost.AddFunction(keyFunction);
             }
             human.AddFunction(ContentKeyFunctions.ToggleKnockdown);
+            // Eternal War: pulling bones out of a body, taking a skeleton apart
+            human.AddFunction(EternalWarKeyFunctions.TakeApart);
             human.AddFunction(ContentKeyFunctions.OpenEmotesMenu);
 
             var ghost = contexts.New("ghost", "human");

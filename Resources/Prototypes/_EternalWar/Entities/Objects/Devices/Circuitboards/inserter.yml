@@ -1,0 +1,13 @@
+- type: entity
+  parent: BaseMachineCircuitboard
+  id: InserterMachineCircuitboard
+  name: inserter machine board
+  description: A machine printed circuit board for an inserter.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    prototype: Inserter
+    stackRequirements:
+      Manipulator: 1
+      Cable: 2

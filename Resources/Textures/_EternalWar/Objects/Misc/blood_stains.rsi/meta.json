@@ -1,0 +1,51 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made for Eternal War, cut to the human parts (https://github.com/tgstation/tgstation/blob/8024397cc81c5f47f74cf4279e35728487d0a1a7/icons/mob/human_parts_greyscale.dmi, modified by DrSmugleaf)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "body_1",
+            "directions": 4
+        },
+        {
+            "name": "body_2",
+            "directions": 4
+        },
+        {
+            "name": "hands_1",
+            "directions": 4
+        },
+        {
+            "name": "hands_2",
+            "directions": 4
+        },
+        {
+            "name": "feet_1",
+            "directions": 4
+        },
+        {
+            "name": "feet_2",
+            "directions": 4
+        },
+        {
+            "name": "head_1",
+            "directions": 4
+        },
+        {
+            "name": "head_2",
+            "directions": 4
+        },
+        {
+            "name": "face_1",
+            "directions": 4
+        },
+        {
+            "name": "face_2",
+            "directions": 4
+        }
+    ]
+}

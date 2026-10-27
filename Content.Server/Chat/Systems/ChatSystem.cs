@@ -1,4 +1,5 @@
 using System.Globalization;
+using Content.Server._EternalWar.Organs;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
@@ -45,6 +46,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private ExamineSystemShared _examineSystem = default!;
     [Dependency] private EntityQuery<GhostHearingComponent> _ghostHearingQuery = default!;
+    [Dependency] private OrganFunctionsSystem _organFunctions = default!; // Eternal War: hearing
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;

@@ -17,6 +17,12 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
     [DataField]
     public Color EyeColor { get; set; } = Color.Black;
 
+    /// <summary>
+    /// Eternal War: color of the right eye for heterochromia. Null means both eyes are <see cref="EyeColor"/>.
+    /// </summary>
+    [DataField]
+    public Color? RightEyeColor { get; set; }
+
     [DataField]
     public Color SkinColor { get; set; } = Color.FromHsv(new Vector4(0.07f, 0.2f, 1f, 1f));
 
@@ -26,32 +32,42 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
     public HumanoidCharacterAppearance(
         Color eyeColor,
         Color skinColor,
-        Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> markings)
+        Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> markings,
+        Color? rightEyeColor = null)
     {
         EyeColor = ClampColor(eyeColor);
+        RightEyeColor = rightEyeColor is { } right ? ClampColor(right) : null;
         SkinColor = ClampColor(skinColor);
         Markings = markings;
     }
 
     public HumanoidCharacterAppearance(HumanoidCharacterAppearance other) :
-        this(other.EyeColor, other.SkinColor, new(other.Markings))
+        this(other.EyeColor, other.SkinColor, new(other.Markings), other.RightEyeColor)
     {
 
     }
 
     public HumanoidCharacterAppearance WithEyeColor(Color newColor)
     {
-        return new(newColor, SkinColor, Markings);
+        return new(newColor, SkinColor, Markings, RightEyeColor);
+    }
+
+    /// <summary>
+    /// Eternal War: sets heterochromia, null gives the right eye the same color as the left one.
+    /// </summary>
+    public HumanoidCharacterAppearance WithRightEyeColor(Color? newColor)
+    {
+        return new(EyeColor, SkinColor, Markings, newColor);
     }
 
     public HumanoidCharacterAppearance WithSkinColor(Color newColor)
     {
-        return new(EyeColor, newColor, Markings);
+        return new(EyeColor, newColor, Markings, RightEyeColor);
     }
 
     public HumanoidCharacterAppearance WithMarkings(Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> newMarkings)
     {
-        return new(EyeColor, SkinColor, newMarkings);
+        return new(EyeColor, SkinColor, newMarkings, RightEyeColor);
     }
 
     public static HumanoidCharacterAppearance DefaultWithSpecies(ProtoId<SpeciesPrototype> species, Sex sex)
@@ -149,10 +165,16 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
             : baseAppearance.Markings;
         // TODO if someone really cares they can probably regenerate the old markings with new colors but im too tired to figure that out
 
+        // Eternal War: randomized eyes come out the same color, kept ones keep their heterochromia.
+        var rightEyeColor = (charEditorRandomizeConfig & RandomizeCfg.Eyes) != 0 || baseAppearance is null
+            ? null
+            : baseAppearance.RightEyeColor;
+
         HumanoidCharacterAppearance appearance = new(
             palette.EyeColor,
             palette.SkinColor,
-            markings);
+            markings,
+            rightEyeColor);
 
         // Safety step. Most systems which called Random() also called this, and not doing so caused issues with markings.
         // In the future it could *maybe* be removed, but it's probably worth the extra CPU cycles to validate this info.
@@ -207,7 +229,8 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         return new HumanoidCharacterAppearance(
             eyeColor,
             skinColor,
-            validatedMarkings);
+            validatedMarkings,
+            appearance.RightEyeColor);
     }
 
     public bool Equals(HumanoidCharacterAppearance? other)
@@ -215,6 +238,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
         if (ReferenceEquals(null, other)) return false;
         if (ReferenceEquals(this, other)) return true;
         return EyeColor.Equals(other.EyeColor) &&
+               Nullable.Equals(RightEyeColor, other.RightEyeColor) &&
                SkinColor.Equals(other.SkinColor) &&
                MarkingManager.MarkingsAreEqual(Markings, other.Markings);
     }
@@ -226,7 +250,7 @@ public sealed partial class HumanoidCharacterAppearance : IEquatable<HumanoidCha
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(EyeColor, SkinColor, Markings);
+        return HashCode.Combine(EyeColor, RightEyeColor, SkinColor, Markings);
     }
 
     public HumanoidCharacterAppearance Clone()

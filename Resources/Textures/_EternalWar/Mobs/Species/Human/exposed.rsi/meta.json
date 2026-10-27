@@ -1,0 +1,347 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "skin_* and flesh_* made for Eternal War from the human parts (https://github.com/tgstation/tgstation/blob/8024397cc81c5f47f74cf4279e35728487d0a1a7/icons/mob/human_parts_greyscale.dmi, modified by DrSmugleaf); bone_* are cut from the skeleton parts created by EmoGarbage",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "flesh_head_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_head_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_head_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_head_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_head_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_head_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_head_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_head_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_chest_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_chest_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_chest_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_chest_m",
+            "directions": 4
+        },
+        {
+            "name": "skin_chest_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_chest_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_chest_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_chest_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_chest_f",
+            "directions": 4
+        },
+        {
+            "name": "skin_chest_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_abdomen_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_abdomen_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_abdomen_m",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_abdomen_m",
+            "directions": 4
+        },
+        {
+            "name": "skin_abdomen_m",
+            "directions": 4
+        },
+        {
+            "name": "flesh_abdomen_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_abdomen_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_abdomen_f",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_abdomen_f",
+            "directions": 4
+        },
+        {
+            "name": "skin_abdomen_f",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "skin_l_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_forearm",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_forearm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_forearm",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_forearm",
+            "directions": 4
+        },
+        {
+            "name": "skin_l_forearm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "skin_r_upper_arm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_forearm",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_forearm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_forearm",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_forearm",
+            "directions": 4
+        },
+        {
+            "name": "skin_r_forearm",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_hand",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_hand",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_hand",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_hand",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_hand",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_hand",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_hand",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_hand",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_thigh",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_thigh",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_thigh",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_thigh",
+            "directions": 4
+        },
+        {
+            "name": "skin_l_thigh",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_shin",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_shin",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_shin",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_shin",
+            "directions": 4
+        },
+        {
+            "name": "skin_l_shin",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_thigh",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_thigh",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_thigh",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_thigh",
+            "directions": 4
+        },
+        {
+            "name": "skin_r_thigh",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_shin",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_shin",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_shin",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_shin",
+            "directions": 4
+        },
+        {
+            "name": "skin_r_shin",
+            "directions": 4
+        },
+        {
+            "name": "flesh_l_foot",
+            "directions": 4
+        },
+        {
+            "name": "bone_l_foot",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_l_foot",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_l_foot",
+            "directions": 4
+        },
+        {
+            "name": "flesh_r_foot",
+            "directions": 4
+        },
+        {
+            "name": "bone_r_foot",
+            "directions": 4
+        },
+        {
+            "name": "flesh_open_r_foot",
+            "directions": 4
+        },
+        {
+            "name": "bone_open_r_foot",
+            "directions": 4
+        }
+    ]
+}

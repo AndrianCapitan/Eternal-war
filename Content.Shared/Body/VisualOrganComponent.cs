@@ -65,6 +65,12 @@ public partial record struct OrganProfileData
     public Color EyeColor = Color.White;
 
     /// <summary>
+    /// Eternal War: the color of the right eye for heterochromia. Null means it is <see cref="EyeColor"/>.
+    /// </summary>
+    [DataField]
+    public Color? RightEyeColor;
+
+    /// <summary>
     /// The "skin color" of this organ
     /// </summary>
     [DataField]

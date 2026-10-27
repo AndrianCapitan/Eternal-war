@@ -20,6 +20,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: LimbSever # Eternal War: a chance to cut a limb off in one blow
+    chance: 0.1
 
 #Shortswords
 - type: entity
@@ -180,6 +182,8 @@
         Slash: 20
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
+  - type: LimbSever # Eternal War: heavier than the other swords
+    chance: 0.15
   - type: Item
     storedSprite:
       state: storage

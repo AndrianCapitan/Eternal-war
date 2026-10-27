@@ -217,6 +217,7 @@ namespace Content.Server.Database
             profile.Voice = humanoid.Voice.ToString();
             profile.Gender = humanoid.Gender.ToString();
             profile.EyeColor = appearance.EyeColor.ToHex();
+            profile.RightEyeColor = appearance.RightEyeColor?.ToHex(); // Eternal War
             profile.SkinColor = appearance.SkinColor.ToHex();
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.OrganMarkings = JsonSerializer.SerializeToDocument(dataNode.ToJsonNode());

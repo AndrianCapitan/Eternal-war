@@ -1,0 +1,140 @@
+# Skin of the body zones. BodyZonesSystem spawns it, like the bones.
+# It has its own health: slashes and burns wear it down first, at 0 it is torn off. A sharp tool takes it off too.
+# Without it the zone bleeds and takes more damage.
+
+- type: entity
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
+  id: SkinBase
+  name: skin
+  abstract: true
+  components:
+  - type: OrganHealth # torn off at 0
+    maxHealth: 15
+  - type: GibbableOrgan
+  - type: Sprite
+    sprite: _EternalWar/Objects/Specific/Medical/organs.rsi
+    state: skin
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: SkinBase
+  id: SkinFace
+  name: face skin
+  components:
+  - type: Organ
+    category: SkinFace
+
+- type: entity
+  parent: SkinBase
+  id: SkinChest
+  name: chest skin
+  components:
+  - type: Organ
+    category: SkinChest
+
+- type: entity
+  parent: SkinBase
+  id: SkinAbdomen
+  name: abdomen skin
+  components:
+  - type: Organ
+    category: SkinAbdomen
+
+- type: entity
+  parent: SkinBase
+  id: SkinUpperArmLeft
+  name: left upper arm skin
+  components:
+  - type: Organ
+    category: SkinUpperArmLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinUpperArmRight
+  name: right upper arm skin
+  components:
+  - type: Organ
+    category: SkinUpperArmRight
+
+- type: entity
+  parent: SkinBase
+  id: SkinForearmLeft
+  name: left forearm skin
+  components:
+  - type: Organ
+    category: SkinForearmLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinForearmRight
+  name: right forearm skin
+  components:
+  - type: Organ
+    category: SkinForearmRight
+
+- type: entity
+  parent: SkinBase
+  id: SkinHandLeft
+  name: left hand skin
+  components:
+  - type: Organ
+    category: SkinHandLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinHandRight
+  name: right hand skin
+  components:
+  - type: Organ
+    category: SkinHandRight
+
+- type: entity
+  parent: SkinBase
+  id: SkinThighLeft
+  name: left thigh skin
+  components:
+  - type: Organ
+    category: SkinThighLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinThighRight
+  name: right thigh skin
+  components:
+  - type: Organ
+    category: SkinThighRight
+
+- type: entity
+  parent: SkinBase
+  id: SkinShinLeft
+  name: left shin skin
+  components:
+  - type: Organ
+    category: SkinShinLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinShinRight
+  name: right shin skin
+  components:
+  - type: Organ
+    category: SkinShinRight
+
+- type: entity
+  parent: SkinBase
+  id: SkinFootLeft
+  name: left foot skin
+  components:
+  - type: Organ
+    category: SkinFootLeft
+
+- type: entity
+  parent: SkinBase
+  id: SkinFootRight
+  name: right foot skin
+  components:
+  - type: Organ
+    category: SkinFootRight

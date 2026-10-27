@@ -342,6 +342,7 @@ namespace Content.Server.Database
         public string FacialHairName { get; set; } = null!;
         public string FacialHairColor { get; set; } = null!;
         public string EyeColor { get; set; } = null!;
+        public string? RightEyeColor { get; set; } // Eternal War: heterochromia, null if both eyes are EyeColor
         public string SkinColor { get; set; } = null!;
         public int SpawnPriority { get; set; } = 0;
         public List<Job> Jobs { get; } = new();

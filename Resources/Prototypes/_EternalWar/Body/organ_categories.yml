@@ -1,0 +1,185 @@
+# Parts of the human anatomy that upstream doesn't have. See BodyZonesComponent for which zone holds what.
+
+# Upper limbs. The upstream arm and leg are the forearm and the shin, these hang between them and the torso.
+- type: organCategory
+  id: UpperArmLeft
+
+- type: organCategory
+  id: UpperArmRight
+
+- type: organCategory
+  id: ThighLeft
+
+- type: organCategory
+  id: ThighRight
+
+# Paired organs that upstream keeps as one.
+- type: organCategory
+  id: EarLeft
+
+- type: organCategory
+  id: EarRight
+
+- type: organCategory
+  id: EyeLeft
+
+- type: organCategory
+  id: EyeRight
+
+- type: organCategory
+  id: LungLeft
+
+- type: organCategory
+  id: LungRight
+
+- type: organCategory
+  id: KidneyLeft
+
+- type: organCategory
+  id: KidneyRight
+
+- type: organCategory
+  id: Spleen
+
+- type: organCategory
+  id: Intestines
+
+# Testes or ovaries.
+- type: organCategory
+  id: Gonads
+
+# Penis or vagina.
+- type: organCategory
+  id: Genitals
+
+# Muscles and blood vessels of every zone.
+- type: organCategory
+  id: MusclesFace
+
+- type: organCategory
+  id: VesselsHead
+
+- type: organCategory
+  id: MusclesChest
+
+- type: organCategory
+  id: VesselsChest
+
+- type: organCategory
+  id: MusclesAbdomen
+
+- type: organCategory
+  id: VesselsAbdomen
+
+- type: organCategory
+  id: MusclesUpperArmLeft
+
+- type: organCategory
+  id: MusclesUpperArmRight
+
+- type: organCategory
+  id: VesselsUpperArmLeft
+
+- type: organCategory
+  id: VesselsUpperArmRight
+
+- type: organCategory
+  id: MusclesForearmLeft
+
+- type: organCategory
+  id: MusclesForearmRight
+
+- type: organCategory
+  id: VesselsForearmLeft
+
+- type: organCategory
+  id: VesselsForearmRight
+
+- type: organCategory
+  id: MusclesHandLeft
+
+- type: organCategory
+  id: MusclesHandRight
+
+- type: organCategory
+  id: MusclesThighLeft
+
+- type: organCategory
+  id: MusclesThighRight
+
+- type: organCategory
+  id: VesselsThighLeft
+
+- type: organCategory
+  id: VesselsThighRight
+
+- type: organCategory
+  id: MusclesShinLeft
+
+- type: organCategory
+  id: MusclesShinRight
+
+- type: organCategory
+  id: VesselsShinLeft
+
+- type: organCategory
+  id: VesselsShinRight
+
+- type: organCategory
+  id: MusclesFootLeft
+
+- type: organCategory
+  id: MusclesFootRight
+
+- type: organCategory
+  id: VesselsFootLeft
+
+- type: organCategory
+  id: VesselsFootRight
+
+# Skin of every zone except the eyes, the mouth and the genitals.
+
+- type: organCategory
+  id: SkinFace
+
+- type: organCategory
+  id: SkinChest
+
+- type: organCategory
+  id: SkinAbdomen
+
+- type: organCategory
+  id: SkinUpperArmLeft
+
+- type: organCategory
+  id: SkinUpperArmRight
+
+- type: organCategory
+  id: SkinForearmLeft
+
+- type: organCategory
+  id: SkinForearmRight
+
+- type: organCategory
+  id: SkinHandLeft
+
+- type: organCategory
+  id: SkinHandRight
+
+- type: organCategory
+  id: SkinThighLeft
+
+- type: organCategory
+  id: SkinThighRight
+
+- type: organCategory
+  id: SkinShinLeft
+
+- type: organCategory
+  id: SkinShinRight
+
+- type: organCategory
+  id: SkinFootLeft
+
+- type: organCategory
+  id: SkinFootRight

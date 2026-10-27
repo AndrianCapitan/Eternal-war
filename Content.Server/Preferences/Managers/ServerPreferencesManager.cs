@@ -189,7 +189,8 @@ namespace Content.Server.Preferences.Managers
                 (
                     Color.FromHex(profile.EyeColor),
                     Color.FromHex(profile.SkinColor),
-                    markings
+                    markings,
+                    profile.RightEyeColor is { } rightEye ? Color.FromHex(rightEye) : null // Eternal War
                 ),
                 spawnPriority,
                 jobs,

@@ -1,0 +1,25 @@
+- type: entity
+  parent: BaseItem
+  id: AdminGenomeScanner
+  name: admin genome scanner
+  description: Reads and rewrites the genome of a living being. Only administration can pick it up.
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/forensic_scanner.rsi
+    state: icon
+    color: "#C77DFF"
+  - type: Item
+    size: Small
+    storedRotation: 90
+    inhandVisuals:
+      left:
+      - state: inhand-left
+        color: "#C77DFF"
+      right:
+      - state: inhand-right
+        color: "#C77DFF"
+  - type: GenomeScanner
+  - type: UserInterface
+    interfaces:
+      enum.GenomeScannerUiKey.Key:
+        type: GenomeScannerBoundUserInterface

@@ -1,3 +1,4 @@
+using Content.Server._EternalWar.Organs;
 using Content.Shared.Chat;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Radio;
@@ -12,6 +13,7 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private INetManager _netMan = default!;
     [Dependency] private RadioSystem _radio = default!;
+    [Dependency] private OrganFunctionsSystem _organFunctions = default!; // Eternal War: hearing
 
     public override void Initialize()
     {
@@ -109,7 +111,8 @@ public sealed partial class HeadsetSystem : SharedHeadsetSystem
             RaiseLocalEvent(parent, ref relayEvent);
         }
 
-        if (TryComp(parent, out ActorComponent? actor))
+        // Eternal War: the deaf don't hear the radio in their ear.
+        if (TryComp(parent, out ActorComponent? actor) && _organFunctions.GetHearing(parent) > 0f)
             _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
     }
 }

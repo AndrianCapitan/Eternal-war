@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Drawn by Tools/_EternalWar/make_organs_rsi.py from the human torso of Mobs/Species/Human/parts.rsi (tgstation, modified by DrSmugleaf)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "appendicitis",
+            "delays": [
+                [
+                    0.4,
+                    0.4,
+                    0.4,
+                    0.4
+                ]
+            ]
+        }
+    ]
+}

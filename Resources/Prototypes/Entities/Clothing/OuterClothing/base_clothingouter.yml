@@ -14,6 +14,9 @@
   parent: ClothingOuterBase
   id: ClothingOuterBaseLarge
   components:
+  # Eternal War: full suits protect everything below the neck
+  - type: ArmorCoverage
+    zones: [ Chest, Abdomen, Genitals, LeftUpperArm, RightUpperArm, LeftForearm, RightForearm, LeftThigh, RightThigh, LeftShin, RightShin ]
   - type: Item
     size: Huge
   - type: Clothing
@@ -230,6 +233,9 @@
   parent: ClothingOuterBase
   id: ClothingOuterBaseMedium
   components:
+  # Eternal War: vests protect only the torso
+  - type: ArmorCoverage
+    zones: [ Chest, Abdomen ]
   - type: Item
     size: Large
     shape:

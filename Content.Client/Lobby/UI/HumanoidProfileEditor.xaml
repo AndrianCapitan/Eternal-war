@@ -121,8 +121,14 @@
                             </BoxContainer>
                             <!-- Eyes -->
                             <BoxContainer Margin="10" Orientation="Vertical">
-                                <Label Text="{Loc 'humanoid-profile-editor-eyes-label'}" />
+                                <Label Name="EyesLabel" Text="{Loc 'humanoid-profile-editor-eyes-label'}" />
                                 <humanoid:EyeColorPicker Name="EyeColorPicker" />
+                                <!-- Eternal War: heterochromia -->
+                                <CheckBox Name="HeterochromiaCheckBox" Text="{Loc 'ew-profile-editor-heterochromia'}" Margin="0 5 0 0" />
+                                <BoxContainer Name="RightEyeContainer" Orientation="Vertical" Visible="False">
+                                    <Label Text="{Loc 'ew-profile-editor-right-eye-label'}" />
+                                    <humanoid:EyeColorPicker Name="RightEyeColorPicker" />
+                                </BoxContainer>
                             </BoxContainer>
                         </BoxContainer>
                     </ScrollContainer>

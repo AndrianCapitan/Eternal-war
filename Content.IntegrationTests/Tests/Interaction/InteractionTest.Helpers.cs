@@ -1689,12 +1689,20 @@ public abstract partial class InteractionTest
 
     /// <summary>
     ///     Make the client hold the move key in some direction for some amount of time.
+    ///     Eternal War: walking is the default, so it holds the run key too unless <paramref name="run"/> is false.
     /// </summary>
-    protected async Task Move(DirectionFlag dir, float seconds)
+    protected async Task Move(DirectionFlag dir, float seconds, bool run = true)
     {
+        if (run)
+            await SetKey(EngineKeyFunctions.Walk, BoundKeyState.Down);
+
         await SetMovementKey(dir, BoundKeyState.Down);
         await RunSeconds(seconds);
         await SetMovementKey(dir, BoundKeyState.Up);
+
+        if (run)
+            await SetKey(EngineKeyFunctions.Walk, BoundKeyState.Up);
+
         await RunTicks(1);
     }
 

@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseItem
+  id: Splint
+  name: splint
+  description: Two boards and a bandage. Aim at the broken part and apply it to set the bone.
+  components:
+  - type: Splint
+  - type: Sprite
+    sprite: _EternalWar/Objects/Specific/Medical/splint.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: StaticPrice
+    price: 20

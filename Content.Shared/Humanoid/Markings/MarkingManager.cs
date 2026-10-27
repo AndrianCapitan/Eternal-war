@@ -300,12 +300,14 @@ public sealed partial class MarkingManager
     /// <param name="sex">The sex to apply to all organs</param>
     /// <param name="skinColor">The skin color to apply to all organs</param>
     /// <param name="eyeColor">The eye color to apply to all organs</param>
+    /// <param name="rightEyeColor">Eternal War: the right eye color for heterochromia</param>
     /// <returns></returns>
     /// <seealso cref="OrganProfileData" />
     public Dictionary<ProtoId<OrganCategoryPrototype>, OrganProfileData> GetProfileData(ProtoId<SpeciesPrototype> species,
         Sex sex,
         Color skinColor,
-        Color eyeColor)
+        Color eyeColor,
+        Color? rightEyeColor = null)
     {
         var ret = new Dictionary<ProtoId<OrganCategoryPrototype>, OrganProfileData>();
 
@@ -315,6 +317,7 @@ public sealed partial class MarkingManager
             {
                 Sex = sex,
                 EyeColor = eyeColor,
+                RightEyeColor = rightEyeColor,
                 SkinColor = skinColor,
             };
         }

@@ -1,0 +1,25 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made for Eternal War",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "shower"
+        },
+        {
+            "name": "shower_on",
+            "delays": [
+                [
+                    0.12,
+                    0.12,
+                    0.12,
+                    0.12
+                ]
+            ]
+        }
+    ]
+}

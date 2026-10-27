@@ -1,0 +1,4 @@
+- type: latheRecipe
+  parent: [ BaseCheapElectronicsRecipe, BaseGeneralMachineRecipeCategory ]
+  id: InserterMachineCircuitboard
+  result: InserterMachineCircuitboard

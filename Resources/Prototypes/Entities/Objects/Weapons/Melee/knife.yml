@@ -82,6 +82,8 @@
     damage:
       types:
         Slash: 13
+  - type: LimbSever # Eternal War: a chance to cut a limb off in one blow
+    chance: 0.08
   - type: Item
     size: Normal
     sprite: Objects/Weapons/Melee/cleaver.rsi

@@ -71,6 +71,10 @@ public sealed partial class ChatSystem
             var entRange = MessageRangeCheck(session, data, range);
             if (entRange == MessageRangeCheckResult.Disallowed)
                 continue;
+            // Eternal War: speech is heard by the inner ears. One hears it at half the range, the deaf not at all.
+            if (channel == ChatChannel.Local && !data.Observer && session.AttachedEntity != source
+                && _organFunctions.HeardDistance(session.AttachedEntity, data.Range) >= VoiceRange)
+                continue;
             var entHideChat = entRange == MessageRangeCheckResult.HideChat;
             _chatManager.ChatMessageToOne(channel, message, wrappedMessage, source, entHideChat, session.Channel, author: author);
         }

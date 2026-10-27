@@ -10,10 +10,19 @@ namespace Content.Shared.Localizations
         [Dependency] private ILocalizationManager _loc = default!;
 
         // If you want to change your codebase's language, do it here.
-        private const string Culture = "ru-RU";
+        // Eternal War: the client can switch to another of Languages in the options, see SetLanguage.
+        public const string DefaultLanguage = "ru-RU";
 
         // Strings missing from the main culture are taken from here.
-        private const string FallbackCulture = "en-US";
+        // Systems that add their own Fluent functions must add them for this culture too.
+        public const string FallbackCulture = "en-US";
+
+        /// <summary>
+        /// Languages a player can pick. All of them are loaded at startup.
+        /// </summary>
+        public static readonly string[] Languages = { DefaultLanguage, FallbackCulture };
+
+        private string Culture => _loc.DefaultCulture?.Name ?? DefaultLanguage;
 
         /// <summary>
         /// Custom format strings used for parsing and displaying minutes:seconds timespans.
@@ -63,6 +72,28 @@ namespace Content.Shared.Localizations
 
             _loc.AddFunction(cultureEn, "MAKEPLURAL", FormatMakePlural);
             _loc.AddFunction(cultureEn, "MANY", FormatMany);
+        }
+
+        /// <summary>
+        /// Switches the language of all further strings. Unknown languages fall back to <see cref="DefaultLanguage"/>.
+        /// Text already on screen keeps its language until it is built again.
+        /// </summary>
+        /// <param name="reload">
+        /// Also drop the cached item names and descriptions. Not needed before anything has been shown.
+        /// </param>
+        public void SetLanguage(string language, bool reload = true)
+        {
+            if (!Languages.Contains(language))
+                language = DefaultLanguage;
+
+            if (_loc.DefaultCulture?.Name == language)
+                return;
+
+            _loc.DefaultCulture = new CultureInfo(language);
+
+            // The engine caches entity names per prototype; reloading is the only public way to clear that cache.
+            if (reload)
+                _loc.ReloadLocalizations();
         }
 
         private ILocValue FormatMany(LocArgs args)

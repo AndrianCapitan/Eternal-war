@@ -1,0 +1,157 @@
+# What a human turns into when the race block of their genome points at an animal.
+# The change is genetic, so it doesn't wear off on crit or death:
+# only editing the genome back to a human value reverts it.
+
+- type: polymorph
+  id: GenomeCockroach
+  configuration:
+    entity: MobCockroach
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeMouse
+  configuration:
+    entity: MobMouse
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeFrog
+  configuration:
+    entity: MobFrog
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeLizard
+  configuration:
+    entity: MobLizard
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeChicken
+  configuration:
+    entity: MobChicken
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeCat
+  configuration:
+    entity: MobCat
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeCorgi
+  configuration:
+    entity: MobCorgi
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeFox
+  configuration:
+    entity: MobFox
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeRaccoon
+  configuration:
+    entity: MobRaccoon
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomePig
+  configuration:
+    entity: MobPig
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeGoat
+  configuration:
+    entity: MobGoat
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeCow
+  configuration:
+    entity: MobCow
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeMonkey
+  configuration:
+    entity: MobMonkey
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false
+
+- type: polymorph
+  id: GenomeGorilla
+  configuration:
+    entity: MobGorilla
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: false
+    revertOnDeath: false

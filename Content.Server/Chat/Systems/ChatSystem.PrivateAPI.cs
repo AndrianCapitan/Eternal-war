@@ -140,7 +140,12 @@ public sealed partial class ChatSystem
             if (MessageRangeCheck(session, data, range) != MessageRangeCheckResult.Full)
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
-            if (data.Range <= WhisperClearRange || data.Observer)
+            // Eternal War: a whisper is heard by the inner ears, with one at half the range, the deaf not at all.
+            var heard = data.Observer || listener == source ? data.Range : _organFunctions.HeardDistance(listener, data.Range);
+            if (heard >= WhisperMuffledRange)
+                continue;
+
+            if (heard <= WhisperClearRange || data.Observer)
                 _chatManager.ChatMessageToOne(ChatChannel.Whisper, message, wrappedMessage, source, false, session.Channel);
             //If listener is too far, they only hear fragments of the message
             else if (_examineSystem.InRangeUnOccluded(source, listener, WhisperMuffledRange))

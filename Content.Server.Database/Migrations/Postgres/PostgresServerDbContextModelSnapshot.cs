@@ -1168,6 +1168,10 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("integer")
                         .HasColumnName("pref_unavailable");
 
+                    b.Property<string>("RightEyeColor")
+                        .HasColumnType("text")
+                        .HasColumnName("right_eye_color");
+
                     b.Property<string>("Sex")
                         .IsRequired()
                         .HasColumnType("text")

@@ -252,6 +252,8 @@ namespace Content.Client.Lobby.UI
                 ReloadProfilePreview();
             };
 
+            InitializeHeterochromia(); // Eternal War
+
             #endregion Eyes
 
             #endregion Appearance

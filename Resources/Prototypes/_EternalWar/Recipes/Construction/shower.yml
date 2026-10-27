@@ -1,0 +1,32 @@
+- type: constructionGraph
+  id: Shower
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: shower
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: Steel
+              amount: 2
+              doAfter: 2
+    - node: shower
+      entity: Shower
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: SheetSteel1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Screwing
+              doAfter: 2
+
+- type: construction
+  parent: BaseChair # a piece of furniture on a free tile
+  id: Shower
+  graph: Shower
+  targetNode: shower
+  canRotate: true

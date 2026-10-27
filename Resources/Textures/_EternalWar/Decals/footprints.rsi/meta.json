@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made for Eternal War",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "shoe_left"
+        },
+        {
+            "name": "shoe_right"
+        },
+        {
+            "name": "bare_left"
+        },
+        {
+            "name": "bare_right"
+        }
+    ]
+}

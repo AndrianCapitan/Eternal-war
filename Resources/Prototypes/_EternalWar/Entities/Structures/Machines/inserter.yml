@@ -1,0 +1,65 @@
+- type: entity
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseMachine, BaseConstructibleMachineDestructible ]
+  id: Inserter
+  name: inserter
+  description: A mechanical arm that takes an item from behind and puts it in front. Works with floors, conveyors, crates, bags and lathes. Needs power.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Inserter
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: Rotatable
+    rotateWhileAnchored: false
+  - type: Sprite
+    sprite: _EternalWar/Structures/Machines/inserter.rsi
+    drawdepth: Objects
+    layers:
+    - state: base
+    - state: arm_source
+      map: [ "arm" ]
+    - state: light
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+      shader: unshaded
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.InserterVisuals.State:
+        arm:
+          AtSource: { state: arm_source }
+          ToTarget: { state: arm_to_target }
+          AtTarget: { state: arm_target }
+          ToSource: { state: arm_to_source }
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: Machine
+    board: InserterMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      machine_board: !type:Container
+      machine_parts: !type:Container
+      inserter_hand: !type:ContainerSlot
+  - type: Construction
+    graph: Machine
+    node: machine
+    containers:
+    - machine_parts
+    - machine_board
+    - inserter_hand
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.35,0.35,0.35"
+        density: 100
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer

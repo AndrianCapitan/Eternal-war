@@ -62,28 +62,52 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
+  # Eternal War: the human anatomy is split into body zones (see BodyZonesComponent).
+  # Upper arms and thighs hold the forearms (ArmLeft) and shins (LegLeft), eyes, ears, lungs and kidneys are separate.
+  # Bones, muscles, vessels and sex organs are added by BodyZonesSystem.
   - type: InitialBody
     organs:
       Torso: OrganHumanTorso
       Head: OrganHumanHead
+      UpperArmLeft: OrganHumanUpperArmLeft
+      UpperArmRight: OrganHumanUpperArmRight
       ArmLeft: OrganHumanArmLeft
       ArmRight: OrganHumanArmRight
       HandRight: OrganHumanHandRight
       HandLeft: OrganHumanHandLeft
+      ThighLeft: OrganHumanThighLeft
+      ThighRight: OrganHumanThighRight
       LegLeft: OrganHumanLegLeft
       LegRight: OrganHumanLegRight
       FootLeft: OrganHumanFootLeft
       FootRight: OrganHumanFootRight
       Brain: OrganHumanBrain
-      Eyes: OrganHumanEyes
+      EyeLeft: OrganHumanEyeLeft
+      EyeRight: OrganHumanEyeRight
       Tongue: OrganHumanTongue
       Appendix: OrganHumanAppendix
-      Ears: OrganHumanEars
-      Lungs: OrganHumanLungs
+      EarLeft: OrganHumanEarLeft
+      EarRight: OrganHumanEarRight
+      LungLeft: OrganHumanLungLeft
+      LungRight: OrganHumanLungRight
       Heart: OrganHumanHeart
       Stomach: OrganHumanStomach
       Liver: OrganHumanLiver
-      Kidneys: OrganHumanKidneys
+      KidneyLeft: OrganHumanKidneyLeft
+      KidneyRight: OrganHumanKidneyRight
+      Spleen: OrganHumanSpleen
+      Intestines: OrganHumanIntestines
+    relationships:
+      Torso: [Head, UpperArmLeft, UpperArmRight, ThighLeft, ThighRight, Appendix, LungLeft, LungRight, Heart, Stomach, Liver, KidneyLeft, KidneyRight, Spleen, Intestines]
+      Head: [Brain, EyeLeft, EyeRight, Tongue, EarLeft, EarRight]
+      UpperArmLeft: [ArmLeft]
+      UpperArmRight: [ArmRight]
+      ArmLeft: [HandLeft]
+      ArmRight: [HandRight]
+      ThighLeft: [LegLeft]
+      ThighRight: [LegRight]
+      LegLeft: [FootLeft]
+      LegRight: [FootRight]
   - type: HumanoidProfile
     species: Human
 
@@ -94,6 +118,8 @@
   id: MobHuman
   name: Urist McHands
   components:
+  # Eternal War: the tongue, ears, liver, kidneys, stomach, intestines, appendix and spleen at work.
+  - type: OrganFunctions
   - type: Butcherable
     spawned:
     - id: FoodMeatHuman
@@ -147,6 +173,10 @@
     - enum.HumanoidVisualLayers.Hair
     - enum.HumanoidVisualLayers.Snout
     - enum.HumanoidVisualLayers.FacialHair
+  # Eternal War: the eyelids blink on the head, the two eyes are separate organs.
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/Mobs/Species/Human/parts.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganHumanExternal ]
@@ -218,6 +248,10 @@
 - type: entity
   parent: [ OrganBaseStomach, OrganHumanInternal, OrganHumanMetabolizer ]
   id: OrganHumanStomach
+  components:
+  # Eternal War: the stomach only passes food on (OrganFunctionsSystem), the intestines digest it.
+  - type: Metabolizer
+    stages: []
 
 - type: entity
   parent: [ OrganBaseLiver, OrganHumanInternal, OrganHumanMetabolizer ]

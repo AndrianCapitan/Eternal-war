@@ -3,6 +3,8 @@ using Content.Client.Hands.Systems;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Hands.Controls;
 using Content.Client.UserInterface.Systems.Hotbar.Widgets;
+using Content.Shared._EternalWar.BodyZones;
+using Content.Shared._EternalWar.Input;
 using Content.Shared.Hands.Components;
 using Content.Shared.Input;
 using Content.Shared.Inventory.VirtualItem;
@@ -108,6 +110,12 @@ public sealed partial class HandsUIController : UIController, IOnStateEntered<Ga
         else if (args.Function == ContentKeyFunctions.ExamineEntity)
         {
             _handsSystem.UIInventoryExamine(hand.SlotName);
+            args.Handle();
+        }
+        // Eternal War: taking apart what the hand holds (a skull, a skeleton)
+        else if (args.Function == EternalWarKeyFunctions.TakeApart)
+        {
+            EntityManager.RaisePredictiveEvent(new TakeApartInHandEvent(hand.SlotName));
             args.Handle();
         }
     }

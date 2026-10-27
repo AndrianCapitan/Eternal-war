@@ -1,7 +1,9 @@
+using Content.Shared._EternalWar.Humanoid;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Preferences;
+using Robust.Shared.Enums;
 using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Prototypes;
 
@@ -23,6 +25,7 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp))
             return;
 
+        var oldSex = ent.Comp.Sex; // Eternal War
         ent.Comp.Gender = profile.Gender;
         ent.Comp.Age = profile.Age;
         ent.Comp.Species = profile.Species;
@@ -30,12 +33,48 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         ent.Comp.Sex = profile.Sex;
         Dirty(ent);
 
+        // Eternal War: sex organs follow the sex.
+        if (oldSex != profile.Sex)
+        {
+            var sexChanged = new SexChangedEvent(oldSex, profile.Sex);
+            RaiseLocalEvent(ent, ref sexChanged);
+        }
+
         var voiceChanged = new VoiceChangedEvent(ent.Comp.Voice, profile.Voice);
         RaiseLocalEvent(ent, ref voiceChanged);
 
         if (TryComp<GrammarComponent>(ent, out var grammar))
         {
             _grammar.SetGender((ent, grammar), profile.Gender);
+        }
+    }
+
+    // Eternal War: the genome changes sex in game.
+    /// <summary>
+    /// Changes the sex of the humanoid, and its grammatical gender to match.
+    /// </summary>
+    public void SetSex(Entity<HumanoidProfileComponent?> ent, Sex sex)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        var oldSex = ent.Comp.Sex;
+        ent.Comp.Sex = sex;
+        ent.Comp.Gender = sex switch
+        {
+            Sex.Male => Gender.Male,
+            Sex.Female => Gender.Female,
+            _ => Gender.Epicene,
+        };
+        Dirty(ent);
+
+        if (TryComp<GrammarComponent>(ent, out var grammar))
+            _grammar.SetGender((ent, grammar), ent.Comp.Gender);
+
+        if (oldSex != sex)
+        {
+            var sexChanged = new SexChangedEvent(oldSex, sex);
+            RaiseLocalEvent(ent, ref sexChanged);
         }
     }
 

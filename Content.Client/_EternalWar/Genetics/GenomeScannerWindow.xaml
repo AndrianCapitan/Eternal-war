@@ -1,0 +1,30 @@
+<controls:FancyWindow xmlns="https://spacestation14.io"
+                      xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+                      Title="{Loc 'genome-scanner-ui-title'}"
+                      MinSize="560 420">
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Vertical" Margin="10 6 10 0" HorizontalExpand="True" VerticalExpand="True">
+            <Label Name="TargetLabel" StyleClasses="highlight" ClipText="True" />
+            <BoxContainer Name="CodeRow" Orientation="Horizontal" Margin="0 4 0 8">
+                <Label Text="{Loc 'genome-scanner-ui-code'}" Margin="0 0 6 0" />
+                <LineEdit Name="CodeEdit" Editable="False" HorizontalExpand="True" />
+            </BoxContainer>
+            <Label Name="NoGenomeLabel" Text="{Loc 'genome-scanner-ui-no-genome'}" Visible="False" />
+            <!-- Columns: block numbers, name, hex values, what the value means. -->
+            <GridContainer Name="BlocksGrid" Columns="4" HSeparationOverride="8" VSeparationOverride="4" />
+        </BoxContainer>
+        <BoxContainer Orientation="Horizontal" Margin="10 8 10 8" HorizontalAlignment="Right">
+            <Button Name="ResetButton" Text="{Loc 'genome-scanner-ui-reset'}" MinWidth="120" Margin="0 0 6 0" />
+            <Button Name="ApplyButton" Text="{Loc 'genome-scanner-ui-apply'}" MinWidth="120" />
+        </BoxContainer>
+        <!-- Footer -->
+        <BoxContainer Orientation="Vertical">
+            <controls:Separator StyleClasses="LowDivider" />
+            <BoxContainer Orientation="Horizontal" Margin="10 2 5 0" VerticalAlignment="Bottom">
+                <Label Text="{Loc 'genome-scanner-ui-flavor'}" StyleClasses="WindowFooterText" />
+                <TextureRect StyleClasses="NTLogoDark" Stretch="KeepAspectCentered"
+                             VerticalAlignment="Center" HorizontalAlignment="Right" HorizontalExpand="True" SetSize="19 19" />
+            </BoxContainer>
+        </BoxContainer>
+    </BoxContainer>
+</controls:FancyWindow>

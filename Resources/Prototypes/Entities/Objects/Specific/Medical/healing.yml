@@ -258,7 +258,7 @@
   parent: BaseHealingItem
   id: Tourniquet
   name: tourniquet
-  description: Stops bleeding! Hopefully.
+  description: A strap with a windlass. Aim at an arm or a leg, or at the stump of a lost one, and tie it on to stop the blood. Take it off before the limb dies.
   components:
     - type: Tag
       tags:
@@ -268,25 +268,8 @@
       state: tourniquet
     - type: Item
       heldPrefix: tourniquet
-    - type: Healing
-      damageContainers:
-        - Biological
-      damage:
-        types:
-          Blunt: 5 # Tourniquets HURT
-          Asphyxiation: 5 # Essentially Stopping all blood reaching a part of your body
-      bloodlossModifier: -10 # Tourniquets stop bleeding
-      delay: 0.5
-      healingBeginSound:
-        path: "/Audio/Items/Medical/brutepack_begin.ogg"
-        params:
-          volume: 1.0
-          variation: 0.125
-      healingEndSound:
-        path: "/Audio/Items/Medical/brutepack_end.ogg"
-        params:
-          volume: 1.0
-          variation: 0.125
+    # Eternal War: tied on a limb zone, stops the blood past it (Circulation) instead of healing
+    - type: Tourniquet
 
 - type: entity
   name: roll of gauze

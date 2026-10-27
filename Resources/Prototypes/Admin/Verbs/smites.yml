@@ -802,9 +802,13 @@
     categories:
     - Heart
     - Lungs
+    - LungLeft # Eternal War: paired organs of humans
+    - LungRight
     - Stomach
     - Liver
     - Kidneys
+    - KidneyLeft
+    - KidneyRight
   - !type:PopupMessage
     messages: [ admin-smite-vomit-organs-self ]
     type: Local

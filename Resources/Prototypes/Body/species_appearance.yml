@@ -6,19 +6,31 @@
     layers:
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedChest" ] # Eternal War: skin, bare muscles or bones of the zone
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedAbdomen" ] # Eternal War: skin, bare muscles or bones of the zone
 
     # Head
     - map: [ "enum.HumanoidVisualLayers.Head" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedHead" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: [ "enum.HumanoidVisualLayers.Snout" ]
     - map: [ "enum.HumanoidVisualLayers.Eyes" ]
+    - map: [ "enum.EternalWarHumanoidLayers.RightEye" ] # Eternal War: the right eye is drawn separately
     - map: [ "enum.HumanoidVisualLayers.Eyelids" ]
     - map: [ "enum.HumanoidVisualLayers.OverEyes" ]
 
     # Limbs
     - map: [ "enum.HumanoidVisualLayers.RArm" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRUpperArm" ] # Eternal War: skin, bare muscles or bones of the zone
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRForearm" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: [ "enum.HumanoidVisualLayers.LArm" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLUpperArm" ] # Eternal War: skin, bare muscles or bones of the zone
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLForearm" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: [ "enum.HumanoidVisualLayers.RLeg" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRThigh" ] # Eternal War: skin, bare muscles or bones of the zone
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRShin" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: [ "enum.HumanoidVisualLayers.LLeg" ]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLThigh" ] # Eternal War: skin, bare muscles or bones of the zone
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLShin" ] # Eternal War: skin, bare muscles or bones of the zone
 
     # Underwear & clothing
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
@@ -27,9 +39,13 @@
 
     # Extremities
     - map: ["enum.HumanoidVisualLayers.LFoot"]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLFoot" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: ["enum.HumanoidVisualLayers.RFoot"]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRFoot" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: ["enum.HumanoidVisualLayers.LHand"]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedLHand" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: ["enum.HumanoidVisualLayers.RHand"]
+    - map: [ "enum.EternalWarHumanoidLayers.ExposedRHand" ] # Eternal War: skin, bare muscles or bones of the zone
 
     # Stuff that goes over the body but below equipment
     - map: ["enum.HumanoidVisualLayers.Overlay"]

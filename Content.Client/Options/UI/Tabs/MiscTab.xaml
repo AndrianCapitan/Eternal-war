@@ -5,6 +5,12 @@
     <BoxContainer Orientation="Vertical">
         <ScrollContainer VerticalExpand="True" HorizontalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8" VerticalExpand="True">
+                <!-- Eternal War: language switch -->
+                <Label Text="{Loc 'ui-options-general-language'}"
+                       StyleClasses="LabelKeyText"/>
+                <ui:OptionDropDown Name="DropDownLanguage" Title="{Loc 'ui-options-language'}" />
+                <Label Text="{Loc 'ui-options-language-hint'}"
+                       StyleClasses="LabelSubText"/>
                 <Label Text="{Loc 'ui-options-general-ui-style'}"
                        StyleClasses="LabelKeyText"/>
                 <ui:OptionDropDown Name="DropDownHudTheme" Title="{Loc 'ui-options-hud-theme'}" />

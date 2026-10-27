@@ -1,0 +1,33 @@
+- type: entity
+  parent: [ BaseStructure, StructureHealthFurnitureStrong ]
+  id: Shower
+  name: shower
+  description: Turn it on and stand under it to wash the blood off your clothes and things.
+  components:
+  - type: Sprite
+    sprite: _EternalWar/Structures/Furniture/shower.rsi
+    drawdepth: WallMountedItems
+    layers:
+    - state: shower
+      map: [ "enum.ShowerVisuals.Enabled" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ShowerVisuals.Enabled:
+        enum.ShowerVisuals.Enabled:
+          True: { state: shower_on }
+          False: { state: shower }
+  - type: Shower
+  - type: InteractionOutline
+  # Stood under, not walked around.
+  - type: Fixtures
+    fixtures: {}
+  - type: AmbientSound
+    enabled: false
+    volume: -6
+    range: 6
+    sound:
+      path: /Audio/Ambience/Objects/flowing_water_open.ogg
+  - type: Construction
+    graph: Shower
+    node: shower

@@ -27,8 +27,8 @@ alerts-weightless-desc =
     Gravity has ceased affecting you, and you're floating around aimlessly. Find something sturdy to hold onto, or throw or shoot something in a direction opposite of you.
     Mag-boots or jetpacks would help you move with more control.
 
-alerts-walking-name = Walking
-alerts-walking-desc = You are walking, moving at a slow pace.
+alerts-walking-name = Running
+alerts-walking-desc = You are running: faster, but it costs stamina, a little food and more water.
 
 alerts-knockdown-name = [color=yellow]Knocked Down[/color]
 alerts-knockdown-desc = You're [color=yellow]Knocked Down[/color]! Something has slipped or pushed you over, encumbering your movement.

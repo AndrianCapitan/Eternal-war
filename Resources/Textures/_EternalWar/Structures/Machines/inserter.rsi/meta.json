@@ -1,0 +1,49 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made for Eternal War",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "light"
+        },
+        {
+            "name": "arm_source"
+        },
+        {
+            "name": "arm_target"
+        },
+        {
+            "name": "arm_to_target",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "arm_to_source",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        }
+    ]
+}

@@ -222,7 +222,7 @@ public sealed partial class ZombieSystem
                     it => it.Value.ShallowClone()));
 
             var zombifiedProfiles = profiles.ToDictionary(pair => pair.Key,
-                pair => pair.Value with { EyeColor = zombiecomp.EyeColor, SkinColor = zombiecomp.SkinColor });
+                pair => pair.Value with { EyeColor = zombiecomp.EyeColor, RightEyeColor = null, SkinColor = zombiecomp.SkinColor }); // Eternal War: both eyes turn
             _visualBody.ApplyProfiles(target, zombifiedProfiles);
 
             var newMarkings = markings.ToDictionary(

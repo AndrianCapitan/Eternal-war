@@ -1,0 +1,356 @@
+# Bones live inside body zones (see BodyZonesComponent). Each has its own health: cracked at 75%, broken below 50%.
+# Only crushing and piercing damage reach them, blades don't.
+# They are spawned by BodyZonesSystem, not by InitialBody, so every species gets them without editing it.
+# A destroyed zone keeps its bone in the body (the skull, the ribs...) or loses it with the part (a limb),
+# only 5% of the time it is knocked out. The bones of the head and torso laid bare are pulled out with the
+# take-apart key (middle mouse), held together as one of the assemblies at the end of this file.
+
+- type: entity
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
+  id: BoneBase
+  name: bone
+  abstract: true
+  components:
+  - type: OrganHealth # cracks at 75% of it, breaks below 50%
+    maxHealth: 20
+  - type: GibbableOrgan
+  - type: Bone
+  - type: Sprite
+    sprite: _EternalWar/Objects/Specific/Medical/bones.rsi
+  - type: Item
+    size: Small
+
+- type: entity
+  parent: BoneBase
+  id: BoneSkull
+  name: skull
+  components:
+  - type: OrganHealth
+    maxHealth: 30
+  - type: Bone
+    vital: true # pulling it out of a living body kills
+  - type: Organ
+    category: BoneSkull
+  - type: Sprite
+    state: skull
+
+- type: entity
+  parent: BoneBase
+  id: BoneJaw
+  name: jaw
+  components:
+  - type: OrganHealth
+    maxHealth: 15
+  - type: Organ
+    category: BoneJaw
+  - type: Sprite
+    state: jaw
+
+- type: entity
+  parent: BoneBase
+  id: BoneSpineThoracic
+  name: thoracic spine
+  components:
+  - type: OrganHealth
+    maxHealth: 30
+  - type: Bone
+    vital: true # pulling it out of a living body kills
+  - type: Organ
+    category: BoneSpineThoracic
+  - type: Sprite
+    state: spine_thoracic
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneRibs
+  name: ribcage
+  components:
+  - type: OrganHealth
+    maxHealth: 30
+  - type: Organ
+    category: BoneRibs
+  - type: Sprite
+    state: ribs
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneSpineLumbar
+  name: lumbar spine
+  components:
+  - type: OrganHealth
+    maxHealth: 30
+  - type: Bone
+    vital: true # pulling it out of a living body kills
+  - type: Organ
+    category: BoneSpineLumbar
+  - type: Sprite
+    state: spine_lumbar
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BonePelvis
+  name: pelvis
+  components:
+  - type: OrganHealth
+    maxHealth: 30
+  - type: Organ
+    category: BonePelvis
+  - type: Sprite
+    state: pelvis
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneHumerusLeft
+  name: left humerus
+  components:
+  - type: Organ
+    category: BoneHumerusLeft
+  - type: Sprite
+    state: arm
+
+- type: entity
+  parent: BoneBase
+  id: BoneHumerusRight
+  name: right humerus
+  components:
+  - type: Organ
+    category: BoneHumerusRight
+  - type: Sprite
+    state: arm
+
+- type: entity
+  parent: BoneBase
+  id: BoneForearmLeft
+  name: left forearm bones
+  components:
+  - type: OrganHealth
+    maxHealth: 15
+  - type: Organ
+    category: BoneForearmLeft
+  - type: Sprite
+    state: forearm
+
+- type: entity
+  parent: BoneBase
+  id: BoneForearmRight
+  name: right forearm bones
+  components:
+  - type: OrganHealth
+    maxHealth: 15
+  - type: Organ
+    category: BoneForearmRight
+  - type: Sprite
+    state: forearm
+
+- type: entity
+  parent: BoneBase
+  id: BoneHandLeft
+  name: left hand bones
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: BoneHandLeft
+  - type: Sprite
+    state: hand
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BoneBase
+  id: BoneHandRight
+  name: right hand bones
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: BoneHandRight
+  - type: Sprite
+    state: hand
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BoneBase
+  id: BoneFemurLeft
+  name: left femur
+  components:
+  - type: OrganHealth
+    maxHealth: 25
+  - type: Organ
+    category: BoneFemurLeft
+  - type: Sprite
+    state: leg
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneFemurRight
+  name: right femur
+  components:
+  - type: OrganHealth
+    maxHealth: 25
+  - type: Organ
+    category: BoneFemurRight
+  - type: Sprite
+    state: leg
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneShinLeft
+  name: left shin bones
+  components:
+  - type: Organ
+    category: BoneShinLeft
+  - type: Sprite
+    state: shin
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneShinRight
+  name: right shin bones
+  components:
+  - type: Organ
+    category: BoneShinRight
+  - type: Sprite
+    state: shin
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: BoneBase
+  id: BoneFootLeft
+  name: left foot bones
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: BoneFootLeft
+  - type: Sprite
+    state: foot
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: BoneBase
+  id: BoneFootRight
+  name: right foot bones
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: BoneFootRight
+  - type: Sprite
+    state: foot
+  - type: Item
+    size: Tiny
+
+# Bones still held together. The bones themselves are in the "bones" container; which prototype holds them is
+# picked by the combination (BoneAssemblyComponent.Bones), the biggest that fits.
+
+- type: entity
+  parent: BaseItem
+  id: BoneAssemblyBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _EternalWar/Objects/Specific/Medical/bones.rsi
+  - type: Item
+    size: Normal
+  - type: ContainerContainer
+    containers:
+      bones: !type:Container
+  - type: Damageable # crushing blows break a spine
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblySkeleton
+  name: skeleton
+  description: A skull, the spine, the ribs and the pelvis, all still held together.
+  components:
+  - type: Sprite
+    state: skeleton
+  - type: Item
+    size: Large
+  - type: BoneAssembly
+    bones: [ BoneSkull, BoneJaw, BoneSpineThoracic, BoneSpineLumbar, BoneRibs, BonePelvis ]
+    takeOut: [ BoneSkull, BoneJaw ]
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblyTrunk
+  name: pelvis, spine and ribs
+  description: The bones of a torso, still held together.
+  components:
+  - type: Sprite
+    state: trunk
+  - type: Item
+    size: Large
+  - type: BoneAssembly
+    bones: [ BoneSpineThoracic, BoneSpineLumbar, BoneRibs, BonePelvis ]
+    takeOut: [ BoneRibs ]
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblyPelvisSpine
+  name: pelvis and spine
+  description: A spine still set in the pelvis.
+  components:
+  - type: Sprite
+    state: pelvis_spine
+  - type: BoneAssembly
+    bones: [ BoneSpineThoracic, BoneSpineLumbar, BonePelvis ]
+    takeOut: [ BonePelvis ]
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblyRibsSpine
+  name: ribs and spine
+  description: A ribcage still hanging on the spine.
+  components:
+  - type: Sprite
+    state: ribs_spine
+  - type: BoneAssembly
+    bones: [ BoneSpineThoracic, BoneSpineLumbar, BoneRibs ]
+    takeOut: [ BoneRibs ]
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblySpine
+  name: spine
+  description: A whole spine. Too strong to pull apart by hand.
+  components:
+  - type: Sprite
+    state: spine
+  - type: BoneAssembly
+    bones: [ BoneSpineThoracic, BoneSpineLumbar ]
+    splitOff: [ BoneSpineLumbar ]
+
+- type: entity
+  parent: BoneAssemblyBase
+  id: BoneAssemblySkullJaw
+  name: skull with jaw
+  description: A skull with its lower jaw.
+  components:
+  - type: Sprite
+    state: skull_jaw
+  - type: Item
+    size: Small
+  - type: BoneAssembly
+    bones: [ BoneSkull, BoneJaw ]
+    takeOut: [ BoneJaw ]

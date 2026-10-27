@@ -1,0 +1,10 @@
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: MindUploadComputerCircuitboard
+  name: mind digitization console board
+  description: A computer printed circuit board for a mind digitization console.
+  components:
+  - type: Sprite
+    state: cpu_science
+  - type: ComputerBoard
+    prototype: ComputerMindUpload

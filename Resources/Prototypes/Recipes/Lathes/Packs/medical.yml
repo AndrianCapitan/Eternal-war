@@ -6,6 +6,8 @@
   - Brutepack
   - Ointment
   - Gauze
+  - Splint # Eternal War
+  - Tourniquet # Eternal War
 
 - type: latheRecipePack
   id: BasicChemistryStatic

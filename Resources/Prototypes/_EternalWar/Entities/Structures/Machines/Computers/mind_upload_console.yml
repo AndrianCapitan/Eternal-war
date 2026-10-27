@@ -1,0 +1,70 @@
+- type: entity
+  parent: BaseComputer
+  id: ComputerMindUpload
+  name: mind digitization console
+  description: Digitizes a mind from an organic brain or a personal AI and uploads it into a switched off positronic brain.
+  components:
+  - type: MindUploadConsole
+  - type: Sprite
+    sprite: Structures/Machines/computers.rsi
+    layers:
+    - map: ["enum.ComputerVisualLayers.Frame"]
+    - map: ["enum.ComputerVisualLayers.Keyboard"]
+    - map: ["enum.ComputerVisualLayers.Screen"]
+      sprite: _EternalWar/Structures/Machines/mind_upload_console.rsi
+    - map: ["enum.ComputerVisualLayers.Keys"]
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: ComputerVisuals
+    stateScreen: screen
+    stateKeys: rd_key
+  - type: Computer
+    board: MindUploadComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 4.0
+    color: "#8f3fd6"
+  - type: ActivatableUI
+    key: enum.MindUploadConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.MindUploadConsoleUiKey.Key:
+        type: MindUploadConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
+  - type: ItemSlots
+    slots:
+      positronic_slot:
+        name: mind-upload-console-slot-positronic
+        insertSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        ejectSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        whitelist:
+          components:
+          - BorgBrain
+        blacklist:
+          components:
+          - MMI
+        whitelistFailPopup: mind-upload-console-positronic-whitelist-fail
+        lockedFailPopup: mind-upload-console-locked
+      source_slot:
+        name: mind-upload-console-slot-source
+        insertSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        ejectSound:
+          path: /Audio/Machines/terminal_insert_disc.ogg
+        whitelist:
+          components:
+          - Brain
+          - PAI
+        whitelistFailPopup: mind-upload-console-source-whitelist-fail
+        lockedFailPopup: mind-upload-console-locked
+  - type: ContainerContainer
+    containers:
+      board: !type:Container
+      positronic_slot: !type:ContainerSlot
+      source_slot: !type:ContainerSlot
+  - type: GuideHelp
+    guides:
+    - Cyborgs
+    - Robotics

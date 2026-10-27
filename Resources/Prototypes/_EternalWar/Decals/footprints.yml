@@ -1,0 +1,37 @@
+# Footprints left after walking through a puddle (HygieneSystem). Tinted with the puddle's color.
+
+- type: decal
+  id: FootprintShoeLeft
+  tags: ["footprints"]
+  showMenu: false
+  defaultCleanable: true
+  sprite:
+    sprite: _EternalWar/Decals/footprints.rsi
+    state: shoe_left
+
+- type: decal
+  id: FootprintShoeRight
+  tags: ["footprints"]
+  showMenu: false
+  defaultCleanable: true
+  sprite:
+    sprite: _EternalWar/Decals/footprints.rsi
+    state: shoe_right
+
+- type: decal
+  id: FootprintBareLeft
+  tags: ["footprints"]
+  showMenu: false
+  defaultCleanable: true
+  sprite:
+    sprite: _EternalWar/Decals/footprints.rsi
+    state: bare_left
+
+- type: decal
+  id: FootprintBareRight
+  tags: ["footprints"]
+  showMenu: false
+  defaultCleanable: true
+  sprite:
+    sprite: _EternalWar/Decals/footprints.rsi
+    state: bare_right

@@ -155,6 +155,7 @@ public abstract partial class SharedVisualBodySystem
             Sex = sex,
             SkinColor = appearance.SkinColor,
             EyeColor = appearance.EyeColor,
+            RightEyeColor = appearance.RightEyeColor, // Eternal War
         });
 
         var markingsEvt = new ApplyOrganMarkingsEvent(appearance.Markings);

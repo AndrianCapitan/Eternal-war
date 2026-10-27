@@ -1,3 +1,4 @@
+using Content.Shared._EternalWar.BodyZones;
 using System.Linq;
 using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
@@ -158,7 +159,10 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         ent.Comp.Profile = data;
 
-        if (ent.Comp.Layer.Equals(HumanoidVisualLayers.Eyes))
+        // Eternal War: the right eye has its own layer and may have its own color.
+        if (ent.Comp.Layer.Equals(EternalWarHumanoidLayers.RightEye))
+            SetOrganColor(ent, ent.Comp.Profile.RightEyeColor ?? ent.Comp.Profile.EyeColor);
+        else if (ent.Comp.Layer.Equals(HumanoidVisualLayers.Eyes))
             SetOrganColor(ent, ent.Comp.Profile.EyeColor);
         else
             SetOrganColor(ent, ent.Comp.Profile.SkinColor);

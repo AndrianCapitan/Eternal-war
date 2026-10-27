@@ -1,0 +1,7 @@
+- type: latheRecipe
+  id: Tourniquet
+  result: Tourniquet
+  completetime: 2
+  materials:
+    Cloth: 75
+    Steel: 25

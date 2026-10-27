@@ -1,5 +1,6 @@
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Tests.Interaction;
+using Content.Shared._EternalWar.Organs;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -99,6 +100,8 @@ public sealed class RiggableTest : InteractionTest
     {
         await AddAtmosphere();
         await SpawnTarget(HumanProtoId);
+        // Eternal War: the damage this test sees is 1.5 poison, which the liver and kidneys would make harmless.
+        Comp<OrganFunctionsComponent>().Detox.Clear();
 
         Entity<DamageableComponent> mob = (STarget.Value, Comp<DamageableComponent>());
         Assert.That(_damageable.GetPositiveDamage(mob).GetTotal(), Is.EqualTo(FixedPoint2.Zero),

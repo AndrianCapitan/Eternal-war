@@ -1,0 +1,269 @@
+# Muscles and blood vessels of the body zones. BodyZonesSystem spawns them, like the bones.
+# The vessels carry the blood from the heart through the zones (Circulation); the muscles are only structure for now.
+
+- type: entity
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
+  id: MusclesBase
+  name: muscles
+  abstract: true
+  components:
+  - type: OrganHealth # torn at 0
+    maxHealth: 20
+  - type: GibbableOrgan
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: muscle
+  - type: Item
+    size: Small
+
+- type: entity
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
+  id: VesselsBase
+  name: blood vessels
+  abstract: true
+  components:
+  - type: OrganHealth # torn at 0
+    maxHealth: 15
+  - type: GibbableOrgan
+  - type: BloodVessel # blood reaches the zone and the zones below only through them
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: vessel
+  - type: Item
+    size: Tiny
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesFace
+  name: facial muscles
+  components:
+  - type: Organ
+    category: MusclesFace
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesChest
+  name: chest muscles
+  components:
+  - type: Organ
+    category: MusclesChest
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesAbdomen
+  name: abdominal and pelvic muscles
+  components:
+  - type: Organ
+    category: MusclesAbdomen
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesUpperArmLeft
+  name: left upper arm muscles
+  components:
+  - type: Organ
+    category: MusclesUpperArmLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesUpperArmRight
+  name: right upper arm muscles
+  components:
+  - type: Organ
+    category: MusclesUpperArmRight
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesForearmLeft
+  name: left forearm muscles
+  components:
+  - type: Organ
+    category: MusclesForearmLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesForearmRight
+  name: right forearm muscles
+  components:
+  - type: Organ
+    category: MusclesForearmRight
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesHandLeft
+  name: left hand muscles
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: MusclesHandLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesHandRight
+  name: right hand muscles
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: MusclesHandRight
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesThighLeft
+  name: left thigh muscles
+  components:
+  - type: Organ
+    category: MusclesThighLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesThighRight
+  name: right thigh muscles
+  components:
+  - type: Organ
+    category: MusclesThighRight
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesShinLeft
+  name: left shin muscles
+  components:
+  - type: Organ
+    category: MusclesShinLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesShinRight
+  name: right shin muscles
+  components:
+  - type: Organ
+    category: MusclesShinRight
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesFootLeft
+  name: left foot muscles
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: MusclesFootLeft
+
+- type: entity
+  parent: MusclesBase
+  id: MusclesFootRight
+  name: right foot muscles
+  components:
+  - type: OrganHealth
+    maxHealth: 10
+  - type: Organ
+    category: MusclesFootRight
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsHead
+  name: head blood vessels
+  components:
+  - type: Organ
+    category: VesselsHead
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsChest
+  name: chest blood vessels
+  components:
+  - type: Organ
+    category: VesselsChest
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsAbdomen
+  name: abdominal blood vessels
+  components:
+  - type: Organ
+    category: VesselsAbdomen
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsUpperArmLeft
+  name: left upper arm blood vessels
+  components:
+  - type: Organ
+    category: VesselsUpperArmLeft
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsUpperArmRight
+  name: right upper arm blood vessels
+  components:
+  - type: Organ
+    category: VesselsUpperArmRight
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsForearmLeft
+  name: left forearm blood vessels
+  components:
+  - type: Organ
+    category: VesselsForearmLeft
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsForearmRight
+  name: right forearm blood vessels
+  components:
+  - type: Organ
+    category: VesselsForearmRight
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsThighLeft
+  name: left thigh blood vessels
+  components:
+  - type: Organ
+    category: VesselsThighLeft
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsThighRight
+  name: right thigh blood vessels
+  components:
+  - type: Organ
+    category: VesselsThighRight
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsShinLeft
+  name: left shin blood vessels
+  components:
+  - type: Organ
+    category: VesselsShinLeft
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsShinRight
+  name: right shin blood vessels
+  components:
+  - type: Organ
+    category: VesselsShinRight
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsFootLeft
+  name: left foot blood vessels
+  components:
+  - type: Organ
+    category: VesselsFootLeft
+
+- type: entity
+  parent: VesselsBase
+  id: VesselsFootRight
+  name: right foot blood vessels
+  components:
+  - type: Organ
+    category: VesselsFootRight

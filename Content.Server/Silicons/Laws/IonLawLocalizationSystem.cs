@@ -1,8 +1,39 @@
+using System.Globalization;
+using Content.Shared.Localizations;
+
 namespace Content.Server.Silicons.Laws;
 
 public sealed partial class IonLawLocalizationSystem : EntitySystem
 {
     [Dependency] private IonLawSystem _ionLaw = default!;
+
+    private static readonly string[] IonFunctions =
+    [
+        "ION-NUMBER-BASE",
+        "ION-NUMBER-MOD",
+        "ION-ADJECTIVE",
+        "ION-SUBJECT",
+        "ION-WHO",
+        "ION-MUST",
+        "ION-THING",
+        "ION-JOB",
+        "ION-WHO-GENERAL",
+        "ION-PLURAL",
+        "ION-REQUIRE",
+        "ION-SEVERITY",
+        "ION-ALLERGY",
+        "ION-FEELING",
+        "ION-CONCEPT",
+        "ION-FOOD",
+        "ION-DRINK",
+        "ION-CHANGE",
+        "ION-WHO-RANDOM",
+        "ION-AREA",
+        "ION-PART",
+        "ION-OBJECT",
+        "ION-HARM-PROTECT",
+        "ION-VERB",
+    ];
 
     public override void Initialize()
     {
@@ -16,30 +47,17 @@ public sealed partial class IonLawLocalizationSystem : EntitySystem
             return;
         }
 
-        Loc.AddFunction(culture, "ION-NUMBER-BASE", _ => GetIonLawValue("ION-NUMBER-BASE"));
-        Loc.AddFunction(culture, "ION-NUMBER-MOD", _ => GetIonLawValue("ION-NUMBER-MOD"));
-        Loc.AddFunction(culture, "ION-ADJECTIVE", _ => GetIonLawValue("ION-ADJECTIVE"));
-        Loc.AddFunction(culture, "ION-SUBJECT", _ => GetIonLawValue("ION-SUBJECT"));
-        Loc.AddFunction(culture, "ION-WHO", _ => GetIonLawValue("ION-WHO"));
-        Loc.AddFunction(culture, "ION-MUST", _ => GetIonLawValue("ION-MUST"));
-        Loc.AddFunction(culture, "ION-THING", _ => GetIonLawValue("ION-THING"));
-        Loc.AddFunction(culture, "ION-JOB", _ => GetIonLawValue("ION-JOB"));
-        Loc.AddFunction(culture, "ION-WHO-GENERAL", _ => GetIonLawValue("ION-WHO-GENERAL"));
-        Loc.AddFunction(culture, "ION-PLURAL", _ => GetIonLawValue("ION-PLURAL"));
-        Loc.AddFunction(culture, "ION-REQUIRE", _ => GetIonLawValue("ION-REQUIRE"));
-        Loc.AddFunction(culture, "ION-SEVERITY", _ => GetIonLawValue("ION-SEVERITY"));
-        Loc.AddFunction(culture, "ION-ALLERGY", _ => GetIonLawValue("ION-ALLERGY"));
-        Loc.AddFunction(culture, "ION-FEELING", _ => GetIonLawValue("ION-FEELING"));
-        Loc.AddFunction(culture, "ION-CONCEPT", _ => GetIonLawValue("ION-CONCEPT"));
-        Loc.AddFunction(culture, "ION-FOOD", _ => GetIonLawValue("ION-FOOD"));
-        Loc.AddFunction(culture, "ION-DRINK", _ => GetIonLawValue("ION-DRINK"));
-        Loc.AddFunction(culture, "ION-CHANGE", _ => GetIonLawValue("ION-CHANGE"));
-        Loc.AddFunction(culture, "ION-WHO-RANDOM", _ => GetIonLawValue("ION-WHO-RANDOM"));
-        Loc.AddFunction(culture, "ION-AREA", _ => GetIonLawValue("ION-AREA"));
-        Loc.AddFunction(culture, "ION-PART", _ => GetIonLawValue("ION-PART"));
-        Loc.AddFunction(culture, "ION-OBJECT", _ => GetIonLawValue("ION-OBJECT"));
-        Loc.AddFunction(culture, "ION-HARM-PROTECT", _ => GetIonLawValue("ION-HARM-PROTECT"));
-        Loc.AddFunction(culture, "ION-VERB", _ => GetIonLawValue("ION-VERB"));
+        // Eternal War: the ion law strings only exist in en-US, which is the fallback culture of the fork,
+        // so the functions have to be known there as well, not only in the default culture.
+        var cultures = new HashSet<CultureInfo> { culture, new(ContentLocalizationManager.FallbackCulture) };
+
+        foreach (var c in cultures)
+        {
+            foreach (var name in IonFunctions)
+            {
+                Loc.AddFunction(c, name, _ => GetIonLawValue(name));
+            }
+        }
     }
 
     /// <summary>

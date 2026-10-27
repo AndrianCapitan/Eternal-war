@@ -1,0 +1,108 @@
+# Block 2 of the genome: which creature the genome builds.
+# Ranges are written in hex, exactly as the genome scanner shows them.
+# Animals take 00-FF (the closer to 100, the closer to a human), humans 100-200.
+# Other species will go above 200 later; for now the block can't go higher.
+
+- type: genomeRace
+  id: Cockroach
+  name: genome-race-cockroach
+  from: "00"
+  to: "0F"
+  polymorph: GenomeCockroach
+
+- type: genomeRace
+  id: Mouse
+  name: genome-race-mouse
+  from: "10"
+  to: "1F"
+  polymorph: GenomeMouse
+
+- type: genomeRace
+  id: Frog
+  name: genome-race-frog
+  from: "20"
+  to: "2F"
+  polymorph: GenomeFrog
+
+- type: genomeRace
+  id: Lizard
+  name: genome-race-lizard
+  from: "30"
+  to: "3F"
+  polymorph: GenomeLizard
+
+- type: genomeRace
+  id: Chicken
+  name: genome-race-chicken
+  from: "40"
+  to: "4F"
+  polymorph: GenomeChicken
+
+- type: genomeRace
+  id: Cat
+  name: genome-race-cat
+  from: "50"
+  to: "5F"
+  polymorph: GenomeCat
+
+- type: genomeRace
+  id: Corgi
+  name: genome-race-corgi
+  from: "60"
+  to: "6F"
+  polymorph: GenomeCorgi
+
+- type: genomeRace
+  id: Fox
+  name: genome-race-fox
+  from: "70"
+  to: "7F"
+  polymorph: GenomeFox
+
+- type: genomeRace
+  id: Raccoon
+  name: genome-race-raccoon
+  from: "80"
+  to: "8F"
+  polymorph: GenomeRaccoon
+
+- type: genomeRace
+  id: Pig
+  name: genome-race-pig
+  from: "90"
+  to: "9F"
+  polymorph: GenomePig
+
+- type: genomeRace
+  id: Goat
+  name: genome-race-goat
+  from: "A0"
+  to: "AF"
+  polymorph: GenomeGoat
+
+- type: genomeRace
+  id: Cow
+  name: genome-race-cow
+  from: "B0"
+  to: "BF"
+  polymorph: GenomeCow
+
+- type: genomeRace
+  id: Monkey
+  name: genome-race-monkey
+  from: "C0"
+  to: "DF"
+  polymorph: GenomeMonkey
+
+- type: genomeRace
+  id: Gorilla
+  name: genome-race-gorilla
+  from: "E0"
+  to: "FF"
+  polymorph: GenomeGorilla
+
+- type: genomeRace
+  id: Human
+  name: genome-race-human
+  from: "100"
+  to: "200"

@@ -98,6 +98,7 @@ public sealed partial class HumanoidProfileEditor
 
         _markingsModel.SetOrganEyeColor(Profile.Appearance.EyeColor);
         EyeColorPicker.SetData(Profile.Appearance.EyeColor);
+        UpdateHeterochromia(); // Eternal War
     }
 
     private void UpdateVoiceControls()

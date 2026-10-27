@@ -26,6 +26,7 @@ using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
 using Content.Shared.Ame.Components;
+using Content.Shared.CCVar;
 using Content.Shared.Localizations;
 using Robust.Client;
 using Robust.Client.Graphics;
@@ -96,6 +97,9 @@ namespace Content.Client.Entry
             Dependencies.InjectDependencies(this);
 
             _contentLoc.Initialize();
+            // Eternal War: the language picked in the options.
+            _contentLoc.SetLanguage(_configManager.GetCVar(CCVars.Language), reload: false);
+            _configManager.OnValueChanged(CCVars.Language, language => _contentLoc.SetLanguage(language));
             _componentFactory.DoAutoRegistrations();
             _componentFactory.IgnoreMissingComponents();
 
