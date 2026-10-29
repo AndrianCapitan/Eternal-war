@@ -16,7 +16,7 @@ public sealed partial class ViewportUIController : UIController
     [Dependency] private IPlayerManager _playerMan = default!;
     [Dependency] private IEntityManager _entMan = default!;
     [Dependency] private IConfigurationManager _configurationManager = default!;
-    public static readonly Vector2i ViewportSize = (EyeManager.PixelsPerMeter * 21, EyeManager.PixelsPerMeter * 15);
+    public static readonly Vector2i ViewportSize = (EyeManager.UIPixelsPerMeter * 21, EyeManager.UIPixelsPerMeter * 15);
     public const int ViewportHeight = 15;
     private MainViewport? Viewport => UIManager.ActiveScreen?.GetWidget<MainViewport>();
 
@@ -57,7 +57,7 @@ public sealed partial class ViewportUIController : UIController
             width = CCVars.ViewportWidth.DefaultValue;
         }
 
-        Viewport.Viewport.ViewportSize = (EyeManager.PixelsPerMeter * width, EyeManager.PixelsPerMeter * ViewportHeight);
+        Viewport.Viewport.ViewportSize = (EyeManager.UIPixelsPerMeter * width, EyeManager.UIPixelsPerMeter * ViewportHeight);
         Viewport.UpdateCfg();
     }
 

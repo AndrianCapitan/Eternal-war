@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Made by FairlySadPanda (GitHub/Discord), based off of sprites taken from https://github.com/DeltaV-Station/Delta-v/commit/65d35d0b3c20aa4e8a0e749a4de8392e53051e86",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

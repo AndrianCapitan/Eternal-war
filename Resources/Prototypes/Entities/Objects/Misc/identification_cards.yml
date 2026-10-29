@@ -38,6 +38,7 @@
     layers:
     - state: default
     - sprite: &icon-rsi Interface/Misc/job_icons.rsi
+      scale: &icon-scale 2, 2 # Eternal War: job icons are UI textures, see ArtPixels
       offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
       state: Passenger
   - type: PresetIdCard
@@ -58,6 +59,7 @@
     - state: stripe_bottom
       color: "#0e4069"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Captain
   - type: Item
@@ -87,6 +89,7 @@
     - state: stripe_bottom
       color: &color-service-bottom "#446326"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: HeadOfPersonnel
   - type: Item
@@ -107,6 +110,7 @@
     - state: stripe_bottom
       color: &color-engineering-bottom "#bc5b00"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ChiefEngineer
   - type: Item
@@ -127,6 +131,7 @@
     - state: stripe_bottom
       color: &color-medical-bottom "#325f7a"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ChiefMedicalOfficer
   - type: Item
@@ -147,6 +152,7 @@
     - state: stripe_bottom
       color: &color-science-bottom "#652368"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ResearchDirector
   - type: Item
@@ -167,6 +173,7 @@
     - state: stripe_bottom
       color: &color-security-bottom "#830000"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: HeadOfSecurity
   - type: Item
@@ -187,6 +194,7 @@
     - state: stripe_bottom
       color: &color-supply-bottom "#5b4523"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: QuarterMaster
   - type: Item
@@ -209,6 +217,7 @@
     - state: stripe_bottom
       color: *color-engineering-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: TechnicalAssistant
   - type: PresetIdCard
@@ -227,6 +236,7 @@
     - state: stripe_bottom
       color: *color-engineering-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: StationEngineer
   - type: PresetIdCard
@@ -245,6 +255,7 @@
     - state: stripe_bottom
       color: *color-engineering-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: AtmosphericTechnician
   - type: PresetIdCard
@@ -263,6 +274,7 @@
     - state: stripe_bottom
       color: *color-engineering-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SeniorEngineer
 
@@ -281,6 +293,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: MedicalIntern
   - type: PresetIdCard
@@ -299,6 +312,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: MedicalDoctor
   - type: PresetIdCard
@@ -317,6 +331,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Paramedic
   - type: PresetIdCard
@@ -335,6 +350,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Chemist
   - type: PresetIdCard
@@ -353,6 +369,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Psychologist
   - type: PresetIdCard
@@ -371,6 +388,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SeniorPhysician
 
@@ -389,6 +407,7 @@
     - state: stripe_bottom
       color: *color-science-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ResearchAssistant
   - type: PresetIdCard
@@ -407,6 +426,7 @@
     - state: stripe_bottom
       color: *color-science-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Scientist
   - type: PresetIdCard
@@ -425,6 +445,7 @@
     - state: stripe_bottom
       color: *color-science-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SeniorResearcher
 
@@ -443,6 +464,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SecurityCadet
   - type: PresetIdCard
@@ -461,6 +483,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SecurityOfficer
   - type: PresetIdCard
@@ -479,6 +502,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Warden
   - type: PresetIdCard
@@ -497,6 +521,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Detective
   - type: PresetIdCard
@@ -515,6 +540,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Brigmedic
 
@@ -531,6 +557,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SeniorOfficer
 
@@ -549,6 +576,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ServiceWorker
   - type: PresetIdCard
@@ -564,6 +592,7 @@
     - state: default
     - state: stripe_clown
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Clown
   - type: PresetIdCard
@@ -582,6 +611,7 @@
     - state: stripe_bottom
       color: "#1d1d1d"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Mime
   - type: PresetIdCard
@@ -600,6 +630,7 @@
     - state: stripe_bottom
       color: "#524089"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Musician
   - type: PresetIdCard
@@ -618,6 +649,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Chaplain
   - type: PresetIdCard
@@ -636,6 +668,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Janitor
   - type: PresetIdCard
@@ -654,6 +687,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Bartender
   - type: PresetIdCard
@@ -672,6 +706,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Bartender
   - type: PresetIdCard
@@ -694,6 +729,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Chef
   - type: PresetIdCard
@@ -712,6 +748,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Botanist
   - type: PresetIdCard
@@ -730,6 +767,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Librarian
   - type: PresetIdCard
@@ -748,6 +786,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Lawyer
   - type: PresetIdCard
@@ -766,6 +805,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Reporter
   - type: PresetIdCard
@@ -784,6 +824,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Boxer
 
@@ -800,6 +841,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Zookeeper
 
@@ -816,6 +858,7 @@
     - state: stripe_bottom
       color: "#454a50"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: TramDriver
   - type: PresetIdCard
@@ -836,6 +879,7 @@
     - state: stripe_bottom
       color: *color-supply-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: CargoTechnician
   - type: PresetIdCard
@@ -854,6 +898,7 @@
     - state: stripe_bottom
       color: *color-supply-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SeniorCourier
 
@@ -870,6 +915,7 @@
     - state: stripe_bottom
       color: *color-supply-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ShaftMiner
   - type: PresetIdCard
@@ -887,6 +933,7 @@
     layers:
     - state: orange
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Prisoner
   - type: Item
@@ -928,6 +975,7 @@
     - state: stripe_bottom
       color: "#3f9b53"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Cluwne
   - type: IdCard
@@ -944,6 +992,7 @@
     layers:
     - state: default
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Visitor
   - type: IdCard
@@ -964,6 +1013,7 @@
     layers:
     - state: default
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Passenger
   - type: Access
@@ -1032,6 +1082,7 @@
     - state: stripe_bottom
       color: &color-syndicate-bottom "#960606"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Syndicate
   - type: IdCard
@@ -1096,6 +1147,7 @@
     - state: stripe_bottom
       color: *color-syndicate-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SyndicateOperative
   - type: AccessStealer
@@ -1116,6 +1168,7 @@
     - state: stripe_bottom
       color: *color-syndicate-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SyndicateCorpsman
   - type: IdCard
@@ -1135,6 +1188,7 @@
     - state: stripe_bottom
       color: *color-syndicate-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: SyndicateCommander
   - type: IdCard
@@ -1155,6 +1209,7 @@
     - state: stripe_bottom
       color: "#309000"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Ninja
   - type: Item
@@ -1176,6 +1231,7 @@
     layers:
     - state: pirate
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Pirate
   - type: Item
@@ -1205,6 +1261,7 @@
     layers:
     - state: wizard
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Wizard
   - type: Item
@@ -1233,6 +1290,7 @@
     - state: stripe_bottom
       color: &color-centcomm-bottom "#0d304d"
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Nanotrasen
   - type: Item
@@ -1253,6 +1311,7 @@
     - state: stripe_bottom
       color: *color-centcomm-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTLeader
   - type: Item
@@ -1273,6 +1332,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTChaplain
   - type: Item
@@ -1293,6 +1353,7 @@
     - state: stripe_bottom
       color: *color-engineering-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTEngineer
   - type: Item
@@ -1313,6 +1374,7 @@
     - state: stripe_bottom
       color: *color-service-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTJanitor
   - type: Item
@@ -1333,6 +1395,7 @@
     - state: stripe_bottom
       color: *color-medical-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTMedical
   - type: Item
@@ -1353,6 +1416,7 @@
     - state: stripe_bottom
       color: *color-security-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: ERTSecurity
   - type: Item
@@ -1373,6 +1437,7 @@
     - state: stripe_bottom
       color: *color-centcomm-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: DeathSquad
   - type: PresetIdCard
@@ -1392,6 +1457,7 @@
     - state: stripe_bottom
       color: *color-centcomm-bottom
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: CBURN
   - type: Item
@@ -1411,6 +1477,7 @@
     layers:
     - state: admin
     - sprite: *icon-rsi
+      scale: *icon-scale
       offset: *icon-offset
       state: Admin
   - type: Clothing

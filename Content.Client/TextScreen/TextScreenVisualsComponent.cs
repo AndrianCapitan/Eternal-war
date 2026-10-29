@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._EternalWar.Graphics;
 using Robust.Client.Graphics;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
@@ -15,9 +16,9 @@ namespace Content.Client.TextScreen;
 public sealed partial class TextScreenVisualsComponent : Component
 {
     /// <summary>
-    /// 1/32 - the size of a pixel in meters.
+    /// 1/32 - the size of an art pixel in meters (glyph widths and offsets are in art pixels).
     /// </summary>
-    public const float PixelSize = 1f / EyeManager.PixelsPerMeter;
+    public const float PixelSize = ArtPixels.Size;
 
     #region Appearance
     /// <summary>

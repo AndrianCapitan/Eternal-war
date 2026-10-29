@@ -43,7 +43,7 @@
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
   - type: InitialBody

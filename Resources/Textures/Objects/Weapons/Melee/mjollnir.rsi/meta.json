@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from and modified by ProtivogaSpriter on TGStation at commit https://github.com/tgstation/tgstation/commit/2614518661bfac1dcc96f07cfcc70b4abacd27bf",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

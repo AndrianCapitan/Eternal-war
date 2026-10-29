@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Edit by Nairodian (github) of labcoat.rsi from Space-Station-14 at commit https://github.com/space-wizards/space-station-14/pull/10758",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

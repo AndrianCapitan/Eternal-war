@@ -2,7 +2,7 @@
 	"version":1,
 	"license":"CC-BY-SA-4.0",
 	"copyright":"KalimbaMachine (github) & CaasGit (github) for Space Station 14",
-	"size":{"x":32,"y":32},
+	"size":{"x":64,"y":64},
 	"states":
 	[
 		{

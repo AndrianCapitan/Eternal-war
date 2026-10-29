@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Made by brainfood1183 (github) for ss14. Vox states by Flareguy for Space Station 14. Flashlight and Reptilian state sprites by TiniestShark (github).",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

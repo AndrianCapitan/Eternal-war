@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from vgstation at https://github.com/vgstation-coders/vgstation13/blob/b4363f59f5feacbc48c29aea4eb7794ad358cd92/icons/obj/device.dmi. Modified by chromiumboy. Rotated by K-Dynamic (github).",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

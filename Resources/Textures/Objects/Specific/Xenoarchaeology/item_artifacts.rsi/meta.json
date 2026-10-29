@@ -3,8 +3,8 @@
     "license": "CC-BY-NC-SA-3.0",
     "copyright": "Taken from goonstation at commit https://github.com/goonstation/goonstation/commit/8c9738746d1222a80dddff25af1bceda58bbccac and created by Flaborized. ano11/ano11_on created by brainfood#7460. Inhands created by brainfood#7460 and modified by EmoGarbage404 (github)",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

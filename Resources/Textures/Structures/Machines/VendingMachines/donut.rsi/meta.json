@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from TauCetiStation at https://github.com/TauCetiStation/TauCetiClassic/commit/8f79f8dac1d41d5050262e1669c83e9d0fff245f",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

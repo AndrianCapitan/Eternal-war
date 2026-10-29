@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from /vg/station at https://github.com/vgstation-coders/vgstation13/commit/2fec32f59c692e78efcadb19d1aae89a3b389b02, modified by K-Dynamic (github). inhand-left, inhand-right by K-Dynamic (github).",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

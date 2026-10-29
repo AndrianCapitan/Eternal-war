@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Made GoldenCan(github) based on medical taken from tgstation at commit https://github.com/tgstation/tgstation/commit/c838ba21dae97db345e0113f99596decd1d66039. In hand sprite by GoldenCan(github) based on medical.rsi in hand sprite which was scaled down from the sprites from tgstation by potato1234_x. Monkey sprite made by GoldenCan(github) based on medical.rsi monkey sprite made by brainfood1183 (github) for ss14",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

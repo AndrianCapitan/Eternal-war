@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from vgstation13 at https://github.com/vgstation-coders/vgstation13 at f91dfe2e0dba1b7a8b9a0fa18251340920979a62, held sprite by ScarKy0",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

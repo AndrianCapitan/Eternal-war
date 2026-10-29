@@ -3,8 +3,8 @@
     "copyright": "Displacement maps by Velken, corgi_belt_displacement by Sparlight, corgi_mask_displacement by Keer-Sar",
     "version": 1,
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "load": {
         "srgb": false

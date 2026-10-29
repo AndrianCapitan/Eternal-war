@@ -5,8 +5,8 @@
     "copyright": "Taken from https://github.com/tgstation/tgstation/commit/4323540b6bec3ae93bbf13d685c2dbe0cb40a36e",
 
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
 
     "states": [

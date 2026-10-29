@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from Tau Ceti Station at commit https://github.com/TauCetiStation/TauCetiClassic/blob/HEAD/icons/obj/clothing/shoes.dmi",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

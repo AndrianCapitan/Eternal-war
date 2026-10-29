@@ -1,3 +1,4 @@
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
@@ -88,34 +89,34 @@ public sealed partial class StatusIconOverlay : Overlay
                 // extra icons that don't fit are just cut off.
                 if (proto.LocationPreference == StatusIconLocationPreference.Fixed)
                 {
-                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)proto.Offset / EyeManager.PixelsPerMeter;
-                    xOffset = sprite.Offset.X - bounds.Width / 2f + (float)proto.OffsetHorizontal / EyeManager.PixelsPerMeter;
+                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)proto.Offset / ArtPixels.PerMeter;
+                    xOffset = sprite.Offset.X - bounds.Width / 2f + (float)proto.OffsetHorizontal / ArtPixels.PerMeter;
                 }
                 else if (proto.LocationPreference == StatusIconLocationPreference.Left ||
                          proto.LocationPreference == StatusIconLocationPreference.None && countL <= countR)
                 {
-                    if (accOffsetL + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
+                    if (accOffsetL + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * ArtPixels.PerMeter)
                         continue;
                     if (proto.Layer == StatusIconLayer.Base)
                     {
                         accOffsetL += texture.Height;
                         countL++;
                     }
-                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)(accOffsetL - proto.Offset) / EyeManager.PixelsPerMeter;
-                    xOffset = sprite.Offset.X - bounds.Width / 2f + (float)proto.OffsetHorizontal / EyeManager.PixelsPerMeter;
+                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)(accOffsetL - proto.Offset) / ArtPixels.PerMeter;
+                    xOffset = sprite.Offset.X - bounds.Width / 2f + (float)proto.OffsetHorizontal / ArtPixels.PerMeter;
 
                 }
                 else
                 {
-                    if (accOffsetR + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * EyeManager.PixelsPerMeter)
+                    if (accOffsetR + texture.Height > _sprite.GetLocalBounds((uid, sprite)).Height * ArtPixels.PerMeter)
                         continue;
                     if (proto.Layer == StatusIconLayer.Base)
                     {
                         accOffsetR += texture.Height;
                         countR++;
                     }
-                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)(accOffsetR - proto.Offset) / EyeManager.PixelsPerMeter;
-                    xOffset = sprite.Offset.X + bounds.Width / 2f - (float)(texture.Width - proto.OffsetHorizontal) / EyeManager.PixelsPerMeter;
+                    yOffset = sprite.Offset.Y + bounds.Height / 2f - (float)(accOffsetR - proto.Offset) / ArtPixels.PerMeter;
+                    xOffset = sprite.Offset.X + bounds.Width / 2f - (float)(texture.Width - proto.OffsetHorizontal) / ArtPixels.PerMeter;
                 }
 
                 if (proto.IsShaded)
@@ -123,8 +124,9 @@ public sealed partial class StatusIconOverlay : Overlay
                 else
                     handle.UseShader(_unshadedShader);
 
+                // Status icons are UI textures in art pixels, drawn bigger than world textures of the same size.
                 var position = new Vector2(xOffset, yOffset);
-                handle.DrawTexture(texture, position);
+                handle.DrawTextureRect(texture, Box2.FromDimensions(position, texture.Size * ArtPixels.Size));
             }
         }
     }

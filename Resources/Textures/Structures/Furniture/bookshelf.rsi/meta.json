@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from cev-eris at commit https://github.com/discordia-space/CEV-Eris/commit/f777c8ddf7a529b002df17909566d5d93b8ad201 and edited by Kit0vras (github)",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

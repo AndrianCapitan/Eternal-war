@@ -22,8 +22,9 @@
 14. [Размер груди](#14-размер-груди)
 15. [Нижнее бельё](#15-нижнее-бельё)
 16. [Давление: вещи ломаются, тело страдает](#16-давление-вещи-ломаются-тело-страдает)
-17. [Тесты](#17-тесты)
-18. [Слияние с апстримом](#18-слияние-с-апстримом)
+17. [Текстуры 64 пикселя на метр](#17-текстуры-64-пикселя-на-метр)
+18. [Тесты](#18-тесты)
+19. [Слияние с апстримом](#19-слияние-с-апстримом)
 
 ---
 
@@ -1736,7 +1737,75 @@ git checkout -- Resources/Prototypes/Species/
 
 ---
 
-## 17. Тесты
+## 17. Текстуры 64 пикселя на метр
+
+Мир рисуется в **64 пикселя на метр** вместо 32, чтобы спрайты можно было рисовать вдвое
+подробнее. Все мировые текстуры увеличены в 2 раза без сглаживания (каждый пиксель стал блоком
+2×2), поэтому пока игра выглядит как раньше. Детали появятся, когда спрайты перерисуют в новом
+размере. Интерфейс остался в 32 пикселях на метр: окна, кнопки и иконки не выросли.
+
+### Как устроено
+
+- **Движок.** В `RobustToolbox` (форк движка, ветка `hires-64ppm`) `EyeManager.PixelsPerMeter = 64`
+  и новая константа `EyeManager.UIPixelsPerMeter = 32`. Через неё считают размер `SpriteView` и
+  `IRenderHandle.DrawEntity` — поэтому иконки действий, алертов, предметов в руках и в хранилище
+  в интерфейсе прежнего размера. Заглушки движка (`noTile`, `noSprite`, `error.rsi`,
+  `debugRotation.rsi`) тоже увеличены.
+- **Вьюпорт.** `ScalingViewport.ViewportSize` измеряется в `UIPixelsPerMeter` (21×15 тайлов =
+  672×480), подгонка под окно (2×, 3×, `viewport.fixed_scale_factor`) работает как раньше. Движку
+  передаётся `RenderScale = масштаб × 32 / 64`: рендер-таргет того же размера в пикселях, что и
+  раньше, но при масштабе 2 каждому пикселю экрана достаётся свой пиксель текстуры. При масштабе 1
+  (`viewport.scale_render = false`) мир рисуется в 32 пикселя на метр и детали теряются.
+- **Пиксели арта.** Числа в пикселях в прототипах и коде (ширина цифр счётчиков алертов, смещения
+  статус-иконок, полоски здоровья и do-after, текстовые экраны, дальность AO, полоска сканера
+  аномалий) остались в пикселях старой сетки 32 на метр. Их переводит в метры
+  `Content.Client/_EternalWar/Graphics/ArtPixels.cs` (`ArtPixels.PerMeter = 32`).
+- **Displacement-карты.** Ключи `sizeMaps` в прототипах — `64` вместо `32`, `displacementSize` в
+  `Resources/Prototypes/Shaders/displacement.yml` — 254 вместо 127 (сдвиг в пикселях текстуры).
+
+### Какие текстуры увеличены
+
+Скрипт `Tools/_EternalWar/upscale_textures.py` увеличивает все PNG мировых RSI и папки `Tiles` и
+удваивает `size` в `meta.json`. Не трогает:
+
+- `Interface/` — кроме того, что рисуется как спрайт сущности: `Interface/Actions`,
+  `Interface/Alerts`, `Misc/ai_hud.rsi`, `Misc/pointing.rsi`, `Misc/progress_bar.rsi`,
+  `Default/blocked.png`;
+- `_EternalWar/Interface/Targeting/` (кукла выбора зоны), `Parallaxes/` (параллакс рисуется со своим
+  масштабом через `ArtPixels`), `Logo/`, `LobbyScreens/`, `Tips/`, `Template/`,
+  `Effects/HeatBlur/`, `Effects/LightMasks/` и экранные оверлеи шлемов.
+
+Статус-иконки (`Interface/Misc/job_icons.rsi` и др.) общие с интерфейсом, поэтому остались
+маленькими: `StatusIconOverlay` рисует их в масштабе `ArtPixels`, а слою иконки на ID-картах
+задан `scale: 2, 2` (`identification_cards.yml`).
+
+**Скрипт увеличивает всё, что ему дали, ещё раз.** Запускать его можно только на текстурах в
+старом размере:
+
+```sh
+# новый RSI, нарисованный в 32 пикселя (например, скриптом make_*_rsi.py или пришедший из апстрима)
+python Tools/_EternalWar/upscale_textures.py --only _EternalWar/Mobs/Species/Human/exposed.rsi
+
+# посмотреть, что попадёт под увеличение, ничего не меняя
+python Tools/_EternalWar/upscale_textures.py --dry-run --only Objects/Tools
+```
+
+Скрипты `Tools/_EternalWar/make_*_rsi.py` по-прежнему рисуют в 32 пикселя: после каждого запуска
+увеличивайте их RSI командой выше. Новые спрайты лучше сразу рисовать в 64.
+
+### Известные ограничения
+
+- Около 40 окон показывают мировую текстуру напрямую через `TextureRect` (`SpriteSystem.Frame0`):
+  карго, латы, магазин, исследования, ChemMaster и др. Где у контрола нет фиксированного размера,
+  иконка вдвое крупнее, чем раньше. Править по мере обнаружения: `TextureScale = 0.5` или
+  фиксированный размер.
+- Видеопамять под текстуры выросла примерно в 4 раза (атлас RSI ≈1 ГБ вместо ≈256 МБ).
+- Интеграционные тесты на машине с 8 ГБ памяти не помещаются целиком: `EntityTest` упирается в
+  20-минутный лимит. Гонять подмножества через `--filter`.
+
+---
+
+## 18. Тесты
 
 `Content.IntegrationTests/Tests/Atmos/SpaceWindTest.cs` — сценарий пробоины:
 
@@ -1965,7 +2034,7 @@ dotnet run --project Content.YAMLLinter
 
 ---
 
-## 18. Слияние с апстримом
+## 19. Слияние с апстримом
 
 Файлы апстрима, которые изменены в форке. При конфликтах смотреть сюда:
 
@@ -2039,6 +2108,19 @@ dotnet run --project Content.YAMLLinter
 | `Resources/Prototypes/Body/Species/human.yml` (снова) | Компонент `PressureBody` у `MobHuman` (раздел 16) |
 | `Content.Server/Atmos/EntitySystems/AtmosphereSystem.HighPressureDelta.cs` (снова) | `AddMovedByPressure` ставит `CarriedByWind`, `UpdateHighPressure` снимает (раздел 16) |
 | `Content.Shared/PowerCell/PowerCellSystem.API.cs` | `TryGetBatteryFromSlot` не отдаёт батарейку устройству со сломанной электроникой (`BrokenElectronicsComponent`, раздел 16) |
+| `RobustToolbox` (сабмодуль) | **Форк движка**, ветка `hires-64ppm`: `EyeManager.cs` (`PixelsPerMeter = 64`, `UIPixelsPerMeter`), `Clyde.RenderHandle.cs` (`DrawEntity` в `UIPixelsPerMeter`), `SpriteView.cs`, увеличенные заглушки в `Resources/Textures`. При обновлении движка перенесите этот коммит (раздел 17) |
+| `Resources/Textures/**` | Почти все мировые текстуры увеличены ×2 (раздел 17). Если апстрим поменял текстуру, возьмите его версию и увеличьте её скриптом `upscale_textures.py --only <путь>`; новые текстуры апстрима — тоже |
+| `Content.Client/Viewport/ScalingViewport.cs` | `RenderScale` движка = масштаб × `UIPixelsPerMeter` / `PixelsPerMeter` |
+| `Content.Client/UserInterface/Systems/Viewport/ViewportUIController.cs`, `Content.Client/Tabletop/TabletopSystem.cs` | Размер вьюпорта в `UIPixelsPerMeter` |
+| `Content.Client/DisplacementMap/DisplacementMapSystem.cs` | Обязательная карта — `PixelsPerMeter` (64), а не 32 |
+| `Content.Client/StatusIcon/StatusIconOverlay.cs` | Смещения и размер иконок в `ArtPixels`, иконка рисуется `DrawTextureRect` |
+| `Content.Client/Overlays/EntityHealthBarOverlay.cs`, `Content.Client/DoAfter/DoAfterOverlay.cs`, `Content.Client/Alerts/GenericCounterAlertSystem.cs`, `Content.Client/TextScreen/TextScreenVisualsComponent.cs`, `Content.Client/Light/AmbientOcclusionOverlay.cs`, `Content.Client/Parallax/ParallaxOverlay.cs` | Пиксельные числа через `ArtPixels` вместо `EyeManager.PixelsPerMeter` |
+| `Content.Client/Overlays/StencilOverlay.RestrictedRange.cs` | Шум `Parallaxes/noise.png` рисуется с масштабом 64/32 |
+| `Content.Client/Anomaly/AnomalyScannerSystem.cs` | Экран сканера под размер слоя, полоска ×2 |
+| `Content.Client/Sprite/ContentSpriteSystem.cs` | Экспорт спрайта в полном разрешении |
+| `Resources/Prototypes/Shaders/displacement.yml` | `displacementSize: 254` |
+| `Resources/Prototypes/Body/Species/*.yml`, `Entities/Mobs/NPCs/{animals,pets,scurret}.yml`, `Insects/mothroach.yml` | Ключ `sizeMaps` — `64` вместо `32` |
+| `Resources/Prototypes/Entities/Objects/Misc/identification_cards.yml` | `scale: 2, 2` у слоя иконки должности |
 
 Только форку принадлежат (конфликтов не будет):
 

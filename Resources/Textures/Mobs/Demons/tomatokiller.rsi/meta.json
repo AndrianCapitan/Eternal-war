@@ -1,8 +1,8 @@
 {
   "version": 1,
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "license": "CC-BY-SA-3.0",
   "copyright": " taken from TG on commit https://github.com/tgstation/tgstation/commit/7e5f13f558253e76865e81c9641b7ec68e57754b, inhands by mubururu_ (github)",

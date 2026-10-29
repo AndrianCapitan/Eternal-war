@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Drawn by Tools/_EternalWar/make_shock_rsi.py from the human of Mobs/Species/Human/parts.rsi (tgstation, modified by DrSmugleaf)",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

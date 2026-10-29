@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/6f5ca45e3ac06b30fb1957042214a888d8c01722. Inhands, worn sprites, vox sprites created by EmoGarbage404 (github), and vulpkanin sprites by jckspjf (github)",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

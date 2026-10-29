@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "By AftrLite (GitHub), circuitboard on 'frame2' and 'frame3' added by iaada (GitHub)",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

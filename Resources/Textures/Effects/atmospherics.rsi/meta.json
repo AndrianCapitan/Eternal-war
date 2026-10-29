@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "frezon, miasma, plasma, tritium and water_vapor made by Marum (https://github.com/marianolarre). All others taken from https://github.com/tgstation/tgstation at 04e43d8c1d5097fdb697addd4395fb849dd341bd",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

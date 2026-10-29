@@ -7,18 +7,18 @@
     op: Keep
     func: NotEqual
   params:
-    displacementSize: 127
+    displacementSize: 254
 
 - type: shader
   id: DisplacedDraw
   kind: source
   path: "/Textures/Shaders/displacement.swsl"
   params:
-    displacementSize: 127
+    displacementSize: 254
 
 - type: shader
   id: DisplacedDrawUnshaded
   kind: source
   path: "/Textures/Shaders/displacement_unshaded.swsl"
   params:
-    displacementSize: 127
+    displacementSize: 254

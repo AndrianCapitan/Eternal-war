@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "taken from tgstation at commit https://github.com/tgstation/tgstation/commit/d170a410d40eec4fc19fe5eb8d561d58a0902082",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

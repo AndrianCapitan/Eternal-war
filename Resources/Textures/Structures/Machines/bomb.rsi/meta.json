@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from https://github.com/tgstation/tgstation/blob/fed8ed6d62de3003260303d021f6138bb90a60ce/icons/obj/assemblies/assemblies.dmi",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

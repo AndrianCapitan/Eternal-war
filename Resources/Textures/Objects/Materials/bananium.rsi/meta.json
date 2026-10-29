@@ -4,8 +4,8 @@
     "copyright": "By Imaginos16 (GitHub). Inhands by AftrLite (GitHub), based on the sprites by Imaginos16.",
     "source": "https://github.com/Wallemations/heavenstation/blob/3bb667878178365e5505e81cae7b4ad1b6068653/icons/obj/stack_objects.dmi",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

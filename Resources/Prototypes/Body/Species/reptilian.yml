@@ -62,28 +62,28 @@
     femaleDisplacements:
       jumpsuit:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: jumpsuit-female
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Reptilian/displacement.rsi
             state: head
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Reptilian/displacement.rsi
             state: mask
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Reptilian/displacement.rsi
             state: head
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Reptilian/displacement.rsi
             state: mask
   - type: InitialBody

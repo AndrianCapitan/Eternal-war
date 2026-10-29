@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "taken from tgstation https://github.com/tgstation/tgstation/blob/master/icons/obj/machines/engine/energy_ball.dmi",
   "size": {
-    "x": 96,
-    "y": 96
+    "x": 192,
+    "y": 192
   },
   "states": [
     {
