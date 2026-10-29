@@ -22,12 +22,19 @@ genome-block-eyes = Цвет левого глаза (R G B)
 genome-block-right-eye = Цвет правого глаза (R G B)
 genome-block-hair = Цвет волос (R G B)
 genome-block-beard = Цвет бороды (R G B)
+genome-block-breasts = Размер груди
 
 genome-sentient = разумен
 genome-not-sentient = неразумен, речь как у обезьяны
 genome-sex-female = женский
 genome-sex-male = мужской
 genome-sex-unsexed = неопределённый
+genome-breasts-0 = маленькая
+genome-breasts-1 = средняя
+genome-breasts-2 = большая
+genome-breasts-3 = очень большая
+genome-breasts-4 = огромная
+genome-breasts-not-female = { $size }; не видно: пол не женский
 genome-invalid = неверно: от 0 до { $max }
 
 genome-race-unknown = неизвестно

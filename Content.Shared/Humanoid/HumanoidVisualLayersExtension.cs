@@ -65,6 +65,7 @@ namespace Content.Shared.Humanoid
                     break;
                 case HumanoidVisualLayers.Chest:
                     yield return HumanoidVisualLayers.Chest;
+                    yield return HumanoidVisualLayers.Breasts; // Eternal War
                     yield return HumanoidVisualLayers.Tail;
                     break;
                 default:

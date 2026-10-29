@@ -1,6 +1,21 @@
 - type: inventoryTemplate
   id: human
   slots:
+    # Eternal War: underwear is worn in its own slots, under the jumpsuit (UnderwearSystem).
+    - name: underwearTop
+      slotTexture: underwear_top
+      slotFlags: UNDERWEARTOP
+      stripTime: 4
+      uiWindowPos: 2,0
+      strippingWindowPos: 0,3
+      displayName: Underwear Top
+    - name: underwearBottom
+      slotTexture: underwear_bottom
+      slotFlags: UNDERWEARBOTTOM
+      stripTime: 4
+      uiWindowPos: 0,0
+      strippingWindowPos: 2,3
+      displayName: Underwear Bottom
     - name: shoes
       slotTexture: shoes
       slotFlags: FEET

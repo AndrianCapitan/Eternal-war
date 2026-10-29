@@ -10,6 +10,7 @@ using Content.Shared.Polymorph;
 using Content.Shared.Speech.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._EternalWar.Genetics;
 
@@ -83,6 +84,7 @@ public sealed partial class GenomeSystem : EntitySystem
         Color? rightEye = null;
         Color? hair = null;
         Color? beard = null;
+        blocks[(int) GenomeBlock.Breasts] = Genome.BreastsMedium;
 
         if (_visualBody.TryGatherMarkingsData(ent.Owner, null, out var profiles, out _, out var applied))
         {
@@ -96,6 +98,12 @@ public sealed partial class GenomeSystem : EntitySystem
 
             hair = FirstMarkingColor(applied, HumanoidVisualLayers.Hair);
             beard = FirstMarkingColor(applied, HumanoidVisualLayers.FacialHair);
+
+            foreach (var layers in applied.Values)
+            {
+                if (layers.TryGetValue(HumanoidVisualLayers.Breasts, out var sizes) && sizes.Count > 0)
+                    blocks[(int) GenomeBlock.Breasts] = Genome.GetBreastsValue(sizes[0].MarkingId);
+            }
         }
 
         Genome.SetColor(blocks, GenomeBlock.SkinR, skin);
@@ -166,7 +174,7 @@ public sealed partial class GenomeSystem : EntitySystem
 
         // Markings are applied again even when hair didn't change: the ones that follow
         // the skin color only pick up a new skin color this way.
-        if (!_visualBody.TryGatherMarkingsData(ent.Owner, null, out _, out _, out var applied))
+        if (!_visualBody.TryGatherMarkingsData(ent.Owner, null, out _, out var markingData, out var applied))
             return;
 
         var hair = Genome.GetColor(blocks, GenomeBlock.HairR);
@@ -182,6 +190,18 @@ public sealed partial class GenomeSystem : EntitySystem
                     HumanoidVisualLayers.FacialHair => layer.Value.Select(m => m.WithColor(beard)).ToList(),
                     _ => layer.Value.ToList(),
                 }));
+
+        // The breast size shows only on a female body; otherwise the medium torso sprite stays as it is.
+        var size = sex == Sex.Female ? Genome.GetBreastSize(blocks[(int) GenomeBlock.Breasts]) : null;
+        foreach (var (organ, data) in markingData)
+        {
+            if (!data.Layers.Contains(HumanoidVisualLayers.Breasts))
+                continue;
+
+            recolored.GetOrNew(organ)[HumanoidVisualLayers.Breasts] = size is { } marking
+                ? new List<Marking> { new(marking, 1) }
+                : new List<Marking>();
+        }
 
         _visualBody.ApplyMarkings(ent, recolored);
     }

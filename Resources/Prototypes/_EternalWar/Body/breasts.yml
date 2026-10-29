@@ -1,0 +1,43 @@
+# Eternal War: the breast size of female humans, chosen in the character editor. Without one the breasts are
+# the medium size of the torso sprite. Drawn over the torso and under the underwear and clothing, tinted with the skin.
+# Sprites: Tools/_EternalWar/make_breasts_rsi.py. Examine text: BreastSizeSystem.
+
+- type: marking
+  id: EternalWarBreastsSmall
+  bodyPart: Breasts
+  forcedColoring: true
+  groupWhitelist: [Human]
+  sexRestriction: Female
+  sprites:
+  - sprite: _EternalWar/Mobs/Customization/breasts.rsi
+    state: small
+
+- type: marking
+  id: EternalWarBreastsLarge
+  bodyPart: Breasts
+  forcedColoring: true
+  groupWhitelist: [Human]
+  sexRestriction: Female
+  sprites:
+  - sprite: _EternalWar/Mobs/Customization/breasts.rsi
+    state: large
+
+- type: marking
+  id: EternalWarBreastsVeryLarge
+  bodyPart: Breasts
+  forcedColoring: true
+  groupWhitelist: [Human]
+  sexRestriction: Female
+  sprites:
+  - sprite: _EternalWar/Mobs/Customization/breasts.rsi
+    state: very_large
+
+- type: marking
+  id: EternalWarBreastsHuge
+  bodyPart: Breasts
+  forcedColoring: true
+  groupWhitelist: [Human]
+  sexRestriction: Female
+  sprites:
+  - sprite: _EternalWar/Mobs/Customization/breasts.rsi
+    state: huge

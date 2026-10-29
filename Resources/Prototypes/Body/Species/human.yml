@@ -15,6 +15,9 @@
     enum.HumanoidVisualLayers.Chest:
       limit: 2
       required: false
+    enum.HumanoidVisualLayers.Breasts: # Eternal War: one breast size, none is the medium one
+      limit: 1
+      required: false
     enum.HumanoidVisualLayers.Snout:
       limit: 1
       required: false
@@ -120,6 +123,36 @@
   components:
   # Eternal War: the tongue, ears, liver, kidneys, stomach, intestines, appendix and spleen at work.
   - type: OrganFunctions
+  # Eternal War: a lot of trauma at once puts a human into shock.
+  - type: TraumaticShock
+  # Eternal War: sudden pressure changes burst eardrums and tear lungs, a stay under high pressure ends in decompression sickness.
+  - type: PressureBody
+  # Eternal War: a human sees only in front of itself and always faces the mouse (FieldOfViewSystem),
+  # so combat mode doesn't take the mouse turning away.
+  - type: FieldOfView
+  - type: CombatMode
+    toggleMouseRotator: false
+  # Eternal War: a player spawns wearing underwear items instead of underwear drawn on the body (UnderwearDressingSystem).
+  - type: UnderwearWearer
+    items:
+      UndergarmentBottomBoxers: EternalWarUnderwearBoxers
+      UndergarmentBottomBriefs: EternalWarUnderwearBriefs
+      UndergarmentBottomSatin: EternalWarUnderwearSatin
+      UndergarmentTopBra: EternalWarUnderwearBra
+      UndergarmentTopSportsbra: EternalWarUnderwearSportsBra
+      UndergarmentTopBinder: EternalWarUnderwearBinder
+      UndergarmentTopTanktop: EternalWarUnderwearTankTop
+    defaults:
+      Male: [ EternalWarUnderwearBoxers ]
+      Female: [ EternalWarUnderwearBriefs, EternalWarUnderwearBra ]
+      Unsexed: [ EternalWarUnderwearBriefs ]
+  # Eternal War: the breast size chosen in the character editor is told on examine (BreastSizeSystem).
+  - type: BreastSize
+    examine:
+      EternalWarBreastsSmall: breast-size-examine-small
+      EternalWarBreastsLarge: breast-size-examine-large
+      EternalWarBreastsVeryLarge: breast-size-examine-very-large
+      EternalWarBreastsHuge: breast-size-examine-huge
   - type: Butcherable
     spawned:
     - id: FoodMeatHuman
@@ -163,6 +196,19 @@
 - type: entity
   parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganHumanExternal ]
   id: OrganHumanTorso
+  components:
+  # Eternal War: the breast size of female humans (Breasts markings, _EternalWar/Customization/breasts.yml).
+  - type: VisualOrganMarkings
+    markingData:
+      layers:
+      - Chest
+      - Breasts
+      - Tail
+      - Overlay
+      - TailOverlay
+      - UndergarmentTop
+      - UndergarmentBottom
+      - Special
 
 - type: entity
   parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganHumanExternal ]

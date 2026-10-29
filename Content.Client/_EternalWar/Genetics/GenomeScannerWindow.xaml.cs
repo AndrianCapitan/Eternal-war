@@ -46,6 +46,7 @@ public sealed partial class GenomeScannerWindow : FancyWindow
         AddColorRow(GenomeBlock.RightEyeR, "genome-block-right-eye");
         AddColorRow(GenomeBlock.HairR, "genome-block-hair");
         AddColorRow(GenomeBlock.BeardR, "genome-block-beard");
+        AddValueRow(GenomeBlock.Breasts, "genome-block-breasts");
 
         ApplyButton.OnPressed += _ =>
         {
@@ -172,6 +173,15 @@ public sealed partial class GenomeScannerWindow : FancyWindow
         {
             RefreshColor(first);
         }
+
+        // The size only shows on a female body, as the server applies it.
+        var female = Genome.TryParse(GenomeBlock.Sex, _edits[(int) GenomeBlock.Sex].Text, out var sex)
+                     && Genome.GetSex(sex) == Sex.Female;
+        RefreshValue(GenomeBlock.Breasts, value =>
+        {
+            var size = Loc.GetString($"genome-breasts-{value}");
+            return female ? size : Loc.GetString("genome-breasts-not-female", ("size", size));
+        });
 
         var valid = TryRead(out var blocks);
         ApplyButton.Disabled = !valid || _blocks == null;

@@ -26,6 +26,8 @@ public enum SlotFlags
     LEGS = 1 << 13,
     FEET = 1 << 14,
     SUITSTORAGE = 1 << 15,
+    UNDERWEARTOP = 1 << 16, // Eternal War: a bra, a tank top
+    UNDERWEARBOTTOM = 1 << 17, // Eternal War: briefs, boxers
     All = ~NONE,
 
     WITHOUT_POCKET = All & ~POCKET

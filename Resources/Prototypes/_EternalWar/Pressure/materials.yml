@@ -1,0 +1,88 @@
+# How materials stand pressure (PressureBreakageSystem). A thing is of the material there is most of in it
+# (PhysicalComposition); light bulbs are ThinGlass and handheld devices on a power cell are Electronics whatever
+# they are made of. Pressures are differences across the wall, kPa; speeds are m/s.
+# Space wind carries things at up to 30 m/s; a room is 101 kPa; an ordinary glass window gives way at 750 kPa.
+
+- type: pressureMaterial
+  id: Glass
+  name: pressure-material-glass
+  materials: [ Glass, ReinforcedGlass, PlasmaGlass, ReinforcedPlasmaGlass, BrassGlass, UraniumGlass, ReinforcedUraniumGlass ]
+  burstPressure: 1200   # a bottle for fizzy drinks holds 1.2-1.7 MPa
+  crushPressure: 3000   # glass is far stronger squeezed than stretched
+  impactSpeed: 8        # thrown hard at a wall
+  breakage: Destroyed
+  debris: ShardGlass
+  shrapnelShare: 1      # all of it flies apart
+  shrapnelDamage: Slash
+  breakSound:
+    collection: GlassBreak
+
+- type: pressureMaterial
+  id: ThinGlass         # light bulbs and tubes
+  name: pressure-material-thin-glass
+  burstPressure: 300
+  crushPressure: 500
+  impactSpeed: 5
+  breakage: Destroyed
+  shrapnelShare: 1
+  shrapnelDamage: Slash
+  breakSound:
+    collection: GlassBreak
+
+- type: pressureMaterial
+  id: ThinMetal         # cans
+  name: pressure-material-thin-metal
+  materials: [ Steel, Gold, Silver, Brass ]
+  burstPressure: 620    # a drink can holds 90 psi
+  crushPressure: 300
+  impactSpeed: 35       # dents, doesn't break: faster than the wind ever carries
+  breakage: Torn
+  shrapnelShare: 0.2    # tears along the seam, few pieces
+  shrapnelDamage: Piercing
+  breakSound:
+    collection: MetalCrunch
+
+- type: pressureMaterial
+  id: Metal             # flasks and other thick metal
+  name: pressure-material-metal
+  materials: [ Steel, Plasteel, Gold, Silver, Brass ]
+  minAmount: 100
+  burstPressure: 5000
+  crushPressure: 5000
+  breakage: Torn
+  shrapnelShare: 0.5
+  shrapnelDamage: Piercing
+  breakSound:
+    collection: MetalBreak
+
+- type: pressureMaterial
+  id: Plastic
+  name: pressure-material-plastic
+  materials: [ Plastic ]
+  burstPressure: 1000   # a PET bottle for fizzy drinks holds 1.0-1.4 MPa
+  crushPressure: 150    # thin plastic folds easily
+  impactSpeed: 25
+  breakage: Destroyed
+  shrapnelShare: 0.3
+  shrapnelDamage: Blunt
+  breakSound:
+    collection: MetalCrunch
+
+- type: pressureMaterial
+  id: Cardboard         # cartons
+  name: pressure-material-cardboard
+  materials: [ Cardboard, Paper ]
+  burstPressure: 60     # a sealed carton balloons and splits in vacuum
+  crushPressure: 60
+  breakage: Torn
+  breakSound:
+    path: /Audio/Effects/unwrap.ogg
+
+- type: pressureMaterial
+  id: Electronics       # handheld devices on a power cell
+  name: pressure-material-electronics
+  crushPressure: 1500   # capacitors, batteries and screens are sealed too
+  impactSpeed: 12       # a phone survives a fall, not a wall at 40 km/h
+  breakage: Disabled
+  breakSound:
+    collection: sparks

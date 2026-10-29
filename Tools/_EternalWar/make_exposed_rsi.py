@@ -8,7 +8,9 @@ and the shin, the torso is the chest and the abdomen. They are cut across at the
 
   skin_<zone>  - the piece of the greyscale human part; the client tints it with the skin color.
                  Only for the zones of a cut part: there the whole part is drawn from pieces.
-  flesh_<zone> - the bare muscles: red, shaded like the skin, with fibres and a dark edge.
+  flesh_<zone> - the bare muscles, cut from the drawn sprite of the whole skinless body (FLESH) by the mask of the
+                 human part. The drawing has the male build: the few pixels a female part has beyond the male one
+                 take the color of the nearest drawn pixel.
   bone_<zone>  - the bones, from the skeleton species.
   flesh_open_<zone>, bone_open_<zone> - the same with an open fracture: a shard of bone out of the wound,
                  or a break with blood across the bare bone.
@@ -22,6 +24,8 @@ from PIL import Image
 HUMAN = "Resources/Textures/Mobs/Species/Human/parts.rsi"
 SKELETON = "Resources/Textures/Mobs/Species/Skeleton/parts.rsi"
 OUT = "Resources/Textures/_EternalWar/Mobs/Species/Human/exposed.rsi"
+# The whole human body without skin, 4 directions like a part state.
+FLESH = "Спрайты для Клода/Без кожи.png"
 
 # Rows (in every 32x32 frame) where the lower zone starts.
 ELBOW = 15
@@ -50,35 +54,43 @@ PIECES = {
     "r_foot": ("r_foot", "r_foot", 0, 32, False),
 }
 
-DARK = (92, 14, 20)
-BRIGHT = (196, 52, 52)
-EDGE = (64, 8, 12)
-FIBRE = 0.82
 
 
-def flesh(src: Image.Image) -> Image.Image:
-    """The muscles of a whole part. Edges are found on the whole part, so a cut doesn't get an outline."""
-    src = src.convert("RGBA")
-    w, h = src.size
+def male(part: str) -> str:
+    return part[:-2] + "_m" if part.endswith("_f") else part
+
+
+def flesh(drawn: Image.Image, part: str) -> Image.Image:
+    """The muscles of a whole part: the drawn body under the mask of the part."""
+    mask = Image.open(f"{HUMAN}/{part}.png").convert("RGBA").load()
+    male_mask = Image.open(f"{HUMAN}/{male(part)}.png").convert("RGBA").load()
+    src = drawn.load()
+    w, h = drawn.size
     out = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    px, po = src.load(), out.load()
+    po = out.load()
     for y in range(h):
         for x in range(w):
-            r, g, b, a = px[x, y]
-            if a == 0:
+            if mask[x, y][3] == 0:
                 continue
-            lum = (r + g + b) / (3 * 255)
-            col = [DARK[i] + (BRIGHT[i] - DARK[i]) * lum for i in range(3)]
-            # Muscle fibres: every third column of each 32x32 frame a bit darker.
-            if (x % 32) % 3 == 0:
-                col = [c * FIBRE for c in col]
-            edge = any(
-                not (0 <= x + dx < w and 0 <= y + dy < h) or px[x + dx, y + dy][3] == 0
-                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-            if edge:
-                col = list(EDGE)
-            po[x, y] = (int(col[0]), int(col[1]), int(col[2]), a)
+            if src[x, y][3] > 0:
+                po[x, y] = src[x, y]
+            elif male_mask[x, y][3] == 0:
+                po[x, y] = nearest(src, x, y)
     return out
+
+
+def nearest(src, x: int, y: int):
+    """The nearest drawn pixel in the same 32x32 frame."""
+    fx, fy = x - x % 32, y - y % 32
+    best, color = None, (0, 0, 0, 0)
+    for yy in range(fy, fy + 32):
+        for xx in range(fx, fx + 32):
+            if src[xx, yy][3] == 0:
+                continue
+            d = (xx - x) ** 2 + (yy - y) ** 2
+            if best is None or d < best:
+                best, color = d, src[xx, yy]
+    return color
 
 
 def cut(image: Image.Image, top: int, bottom: int) -> Image.Image:
@@ -129,10 +141,11 @@ def main():
     for old in os.listdir(OUT):
         os.remove(os.path.join(OUT, old))
 
+    drawn = Image.open(FLESH).convert("RGBA")
     states = []
     for zone, (human, skeleton, top, bottom, has_skin) in PIECES.items():
         part = Image.open(f"{HUMAN}/{human}.png")
-        flesh_piece = cut(flesh(part), top, bottom)
+        flesh_piece = cut(flesh(drawn, human), top, bottom)
         bone_piece = cut(Image.open(f"{SKELETON}/{skeleton}.png"), top, bottom)
         flesh_piece.save(f"{OUT}/flesh_{zone}.png")
         bone_piece.save(f"{OUT}/bone_{zone}.png")
@@ -146,8 +159,9 @@ def main():
     meta = {
         "version": 1,
         "license": "CC-BY-SA-3.0",
-        "copyright": "skin_* and flesh_* made for Eternal War from the human parts "
+        "copyright": "skin_* cut for Eternal War from the human parts "
                      "(https://github.com/tgstation/tgstation/blob/8024397cc81c5f47f74cf4279e35728487d0a1a7/icons/mob/human_parts_greyscale.dmi, modified by DrSmugleaf); "
+                     "flesh_* cut from the skinless human drawn for Eternal War; "
                      "bone_* are cut from the skeleton parts created by EmoGarbage",
         "size": {"x": 32, "y": 32},
         "states": states,

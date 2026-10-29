@@ -1,0 +1,25 @@
+// Eternal War: dims the world outside the field of view cone (FieldOfViewComponent).
+// All positions and vectors are in fragment (render target pixel) space.
+
+light_mode unshaded;
+
+uniform highp vec2 center;      // the eyes of the mob
+uniform highp vec2 forward;     // where it looks, unit vector
+uniform highp vec2 leftDir;     // its left, unit vector
+uniform highp float halfLeft;   // half of the cone to its left, radians
+uniform highp float halfRight;  // half of the cone to its right, radians
+uniform highp float edge;       // softness of the cone edge, radians
+uniform highp float nearRadius; // seen all around this close, pixels
+uniform highp float darkness;   // 0..1
+
+void fragment() {
+    highp vec2 delta = FRAGCOORD.xy - center;
+    highp float side = dot(delta, leftDir);
+    highp float angle = atan(abs(side), dot(delta, forward));
+    highp float halfAngle = side >= 0.0 ? halfLeft : halfRight;
+
+    highp float outside = smoothstep(halfAngle - edge, halfAngle + edge, angle);
+    outside *= smoothstep(nearRadius * 0.8, nearRadius * 1.2, length(delta));
+
+    COLOR = vec4(0.0, 0.0, 0.0, darkness * outside);
+}

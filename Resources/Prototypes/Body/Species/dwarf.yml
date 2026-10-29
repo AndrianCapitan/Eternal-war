@@ -176,8 +176,10 @@
   - type: Metabolizer
     metabolizerTypes: [ Dwarf ]
 
+# Eternal War: the parents of OrganHumanTorso instead of it, as its breast size layer is for humans only
+# (marking layer lists add up through parents and can't be taken away).
 - type: entity
-  parent: [ OrganHumanTorso, OrganDwarfAppearance ]
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganHumanExternal, OrganDwarfAppearance ]
   id: OrganDwarfTorso
   components:
   - type: VisualOrganMarkings

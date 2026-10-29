@@ -108,6 +108,14 @@ public sealed class GenomeTest : GameTest
 
             Assert.That(Genome.IsSentient(0x1FF), Is.False);
             Assert.That(Genome.IsSentient(0x200));
+
+            Assert.That(Genome.TryParse(GenomeBlock.Breasts, "4", out var huge) && huge == 4);
+            Assert.That(Genome.TryParse(GenomeBlock.Breasts, "5", out _), Is.False, "there are five breast sizes, 0 to 4");
+            Assert.That(Genome.GetBreastSize(Genome.BreastsMedium), Is.Null, "medium is the torso without a marking");
+
+            var blocks = new int[Genome.BlockCount];
+            blocks[(int) GenomeBlock.Breasts] = 3;
+            Assert.That(Genome.FormatCode(blocks), Does.EndWith("-03"), "the breast size ends the code");
         });
     }
 
@@ -264,6 +272,54 @@ public sealed class GenomeTest : GameTest
         _genome.SetGenome(genome, blocks);
         Assert.That(genome.Comp.Blocks[(int) GenomeBlock.Race], Is.EqualTo(Genome.RaceMax));
         Assert.That(genome.Comp.Blocks[(int) GenomeBlock.SkinR], Is.EqualTo(Genome.ColorMax));
+    }
+
+    private ProtoId<MarkingPrototype>? BreastSize(EntityUid body)
+    {
+        return Markings(body, HumanoidVisualLayers.Breasts).Select(m => (ProtoId<MarkingPrototype>?) m.MarkingId).FirstOrDefault();
+    }
+
+    [Test]
+    [RunOnSide(Side.Server)]
+    public void BreastSizeIsInTheGenome()
+    {
+        var uid = SpawnHuman(Sex.Female, Color.Black, Color.Black);
+        _visualBody.ApplyMarkings(uid, new() { ["Torso"] = new() { [HumanoidVisualLayers.Breasts] = new() { new Marking("EternalWarBreastsLarge", 1) } } });
+
+        Assert.That(_genome.TryGetGenome(uid, out var genome));
+        Assert.That(genome.Comp.Blocks[(int) GenomeBlock.Breasts], Is.EqualTo(2), "read from the large size marking");
+
+        var blocks = (int[]) genome.Comp.Blocks.Clone();
+        blocks[(int) GenomeBlock.Breasts] = 4;
+        _genome.SetGenome(genome, blocks);
+        Assert.That(BreastSize(uid)?.Id, Is.EqualTo("EternalWarBreastsHuge"));
+
+        blocks[(int) GenomeBlock.Breasts] = Genome.BreastsMedium;
+        _genome.SetGenome(genome, blocks);
+        Assert.That(BreastSize(uid), Is.Null, "medium is the torso without a marking");
+
+        blocks[(int) GenomeBlock.Breasts] = 0;
+        _genome.SetGenome(genome, blocks);
+        Assert.That(BreastSize(uid)?.Id, Is.EqualTo("EternalWarBreastsSmall"));
+
+        // A man keeps the block, but his body doesn't show it; back to female, it shows again.
+        blocks[(int) GenomeBlock.Sex] = Genome.Male;
+        blocks[(int) GenomeBlock.Breasts] = 4;
+        _genome.SetGenome(genome, blocks);
+        Assert.Multiple(() =>
+        {
+            Assert.That(BreastSize(uid), Is.Null);
+            Assert.That(genome.Comp.Blocks[(int) GenomeBlock.Breasts], Is.EqualTo(4));
+        });
+
+        blocks[(int) GenomeBlock.Sex] = 0x100;
+        _genome.SetGenome(genome, blocks);
+        Assert.That(BreastSize(uid)?.Id, Is.EqualTo("EternalWarBreastsHuge"));
+
+        // Out of range is clamped by the server.
+        blocks[(int) GenomeBlock.Breasts] = 0x10;
+        _genome.SetGenome(genome, blocks);
+        Assert.That(genome.Comp.Blocks[(int) GenomeBlock.Breasts], Is.EqualTo(Genome.BreastsMax));
     }
 
     [Test]

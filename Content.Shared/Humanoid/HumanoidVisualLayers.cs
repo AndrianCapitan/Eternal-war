@@ -35,6 +35,7 @@ namespace Content.Shared.Humanoid
         StencilMask,
         Ensnare,
         Fire,
+        Breasts, // Eternal War: the breast size of female humans, drawn over the chest
 
     }
 }

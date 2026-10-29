@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Drawn for Eternal War over the human torso of tgstation (https://github.com/tgstation/tgstation/blob/8024397cc81c5f47f74cf4279e35728487d0a1a7/icons/mob/human_parts_greyscale.dmi), by Tools/_EternalWar/make_breasts_rsi.py",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "small",
+      "directions": 4
+    },
+    {
+      "name": "large",
+      "directions": 4
+    },
+    {
+      "name": "very_large",
+      "directions": 4
+    },
+    {
+      "name": "huge",
+      "directions": 4
+    }
+  ]
+}

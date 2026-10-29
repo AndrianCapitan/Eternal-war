@@ -39,7 +39,9 @@ public sealed partial class PowerCellSystem
             return false;
         }
 
-        if (!_itemSlots.TryGetSlot(ent.Owner, ent.Comp.CellSlotId, out var slot))
+        if (!_itemSlots.TryGetSlot(ent.Owner, ent.Comp.CellSlotId, out var slot)
+            // Eternal War: a device with broken electronics gets no power from its cell (BrokenElectronicsSystem).
+            || HasComp<Content.Shared._EternalWar.Pressure.BrokenElectronicsComponent>(ent))
         {
             battery = null;
             return false;

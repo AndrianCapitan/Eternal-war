@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._EternalWar.Genetics;
@@ -8,6 +9,7 @@ namespace Content.Shared._EternalWar.Genetics;
 /// <summary>
 /// Blocks of the genome, in the order the scanner shows them.
 /// Colors take three blocks each: R, G and B.
+/// The breast size was added last, so it comes after the colors.
 /// </summary>
 public enum GenomeBlock : byte
 {
@@ -29,6 +31,7 @@ public enum GenomeBlock : byte
     BeardR,
     BeardG,
     BeardB,
+    Breasts,
 }
 
 /// <summary>
@@ -37,7 +40,7 @@ public enum GenomeBlock : byte
 /// </summary>
 public static class Genome
 {
-    public const int BlockCount = 18;
+    public const int BlockCount = 19;
 
     /// <summary>
     /// Below this the creature can't talk and makes monkey noises instead.
@@ -53,6 +56,22 @@ public static class Genome
     public const int SexMax = 0x800;
 
     public const int ColorMax = 0xFF;
+
+    /// <summary>
+    /// The breast size marking of each value of the breasts block, from the smallest. Medium is the torso sprite
+    /// itself, without a marking. Only a female body shows it.
+    /// </summary>
+    public static readonly ProtoId<MarkingPrototype>?[] BreastSizes =
+    {
+        "EternalWarBreastsSmall",
+        null,
+        "EternalWarBreastsLarge",
+        "EternalWarBreastsVeryLarge",
+        "EternalWarBreastsHuge",
+    };
+
+    public const int BreastsMedium = 1;
+    public static int BreastsMax => BreastSizes.Length - 1;
 
     /// <summary>
     /// The first block of each color, in scanner order.
@@ -73,6 +92,7 @@ public static class Genome
             GenomeBlock.Sentience => SentienceMax,
             GenomeBlock.Race => RaceMax,
             GenomeBlock.Sex => SexMax,
+            GenomeBlock.Breasts => BreastsMax,
             _ => ColorMax,
         };
     }
@@ -114,7 +134,7 @@ public static class Genome
     }
 
     /// <summary>
-    /// The whole genome as one line: <c>2A1-150-535-E0AC69-...</c>, colors written as RRGGBB.
+    /// The whole genome as one line: <c>2A1-150-535-E0AC69-...-01</c>, colors written as RRGGBB, the breast size last.
     /// </summary>
     public static string FormatCode(int[] blocks)
     {
@@ -132,6 +152,8 @@ public static class Genome
                       + Format(first + 2, blocks[(int) first + 2]));
         }
 
+        parts.Add(Format(GenomeBlock.Breasts, blocks[(int) GenomeBlock.Breasts]));
+
         return string.Join("-", parts);
     }
 
@@ -146,6 +168,23 @@ public static class Genome
             return Sex.Female;
 
         return value == Male ? Sex.Male : Sex.Unsexed;
+    }
+
+    /// <summary>
+    /// The breast size marking of a value of the breasts block, null for the medium size.
+    /// </summary>
+    public static ProtoId<MarkingPrototype>? GetBreastSize(int value)
+    {
+        return BreastSizes[Math.Clamp(value, 0, BreastsMax)];
+    }
+
+    /// <summary>
+    /// The value of the breasts block for a breast size marking, medium if it is none of the sizes.
+    /// </summary>
+    public static int GetBreastsValue(ProtoId<MarkingPrototype>? size)
+    {
+        var index = Array.IndexOf(BreastSizes, size);
+        return index < 0 ? BreastsMedium : index;
     }
 
     public static Color GetColor(int[] blocks, GenomeBlock first)

@@ -1,0 +1,130 @@
+# Eternal War: underwear worn in its own slots, under the jumpsuit (underwearTop, underwearBottom in the human
+# inventory template). A player spawns in the underwear chosen in the character editor (UnderwearWearer on MobHuman).
+# It can't be put on or taken off over the jumpsuit or a suit (Underwear).
+# Sprites: Tools/_EternalWar/make_underwear_rsi.py, from the underwear markings.
+
+- type: entity
+  abstract: true
+  parent: [ SolutionFood, SolutionToolSmall, Clothing, BaseSlicingRefinable ]
+  id: EternalWarUnderwearBase
+  components:
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: _EternalWar/Clothing/Underwear/underwear.rsi
+  - type: Underwear
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 1
+  - type: PhysicalComposition
+    materialComposition:
+      Cloth: 50
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 5
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+
+- type: entity
+  abstract: true
+  parent: EternalWarUnderwearBase
+  id: EternalWarUnderwearTopBase
+  components:
+  - type: Clothing
+    slots: [ UNDERWEARTOP ]
+
+- type: entity
+  abstract: true
+  parent: EternalWarUnderwearBase
+  id: EternalWarUnderwearBottomBase
+  components:
+  - type: Clothing
+    slots: [ UNDERWEARBOTTOM ]
+
+# Bottoms
+
+- type: entity
+  parent: EternalWarUnderwearBottomBase
+  id: EternalWarUnderwearBoxers
+  name: boxers
+  description: Loose cotton shorts worn under the clothes.
+  components:
+  - type: Sprite
+    state: boxers
+  - type: Clothing
+    equippedState: boxers-equipped
+
+- type: entity
+  parent: EternalWarUnderwearBottomBase
+  id: EternalWarUnderwearBriefs
+  name: briefs
+  description: Plain underpants.
+  components:
+  - type: Sprite
+    state: briefs
+  - type: Clothing
+    equippedState: briefs-equipped
+
+- type: entity
+  parent: EternalWarUnderwearBottomBase
+  id: EternalWarUnderwearSatin
+  name: satin panties
+  description: Smooth, shiny underpants.
+  components:
+  - type: Sprite
+    state: satin
+  - type: Clothing
+    equippedState: satin-equipped
+
+# Tops
+
+- type: entity
+  parent: EternalWarUnderwearTopBase
+  id: EternalWarUnderwearBra
+  name: bra
+  description: An ordinary bra.
+  components:
+  - type: Sprite
+    state: classic
+  - type: Clothing
+    equippedState: classic-equipped
+
+- type: entity
+  parent: EternalWarUnderwearTopBase
+  id: EternalWarUnderwearSportsBra
+  name: sports bra
+  description: A snug bra for running and work.
+  components:
+  - type: Sprite
+    state: sports
+  - type: Clothing
+    equippedState: sports-equipped
+
+- type: entity
+  parent: EternalWarUnderwearTopBase
+  id: EternalWarUnderwearBinder
+  name: binder
+  description: A tight top that flattens the chest.
+  components:
+  - type: Sprite
+    state: binder
+  - type: Clothing
+    equippedState: binder-equipped
+
+- type: entity
+  parent: EternalWarUnderwearTopBase
+  id: EternalWarUnderwearTankTop
+  name: tank top
+  description: A sleeveless undershirt.
+  components:
+  - type: Sprite
+    state: tanktop
+  - type: Clothing
+    equippedState: tanktop-equipped

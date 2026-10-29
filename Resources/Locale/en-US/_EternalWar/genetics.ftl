@@ -19,12 +19,19 @@ genome-block-eyes = Left eye color (R G B)
 genome-block-right-eye = Right eye color (R G B)
 genome-block-hair = Hair color (R G B)
 genome-block-beard = Beard color (R G B)
+genome-block-breasts = Breast size
 
 genome-sentient = sentient
 genome-not-sentient = not sentient, speaks like a monkey
 genome-sex-female = female
 genome-sex-male = male
 genome-sex-unsexed = undefined
+genome-breasts-0 = small
+genome-breasts-1 = medium
+genome-breasts-2 = large
+genome-breasts-3 = very large
+genome-breasts-4 = huge
+genome-breasts-not-female = { $size }; doesn't show: the sex is not female
 genome-invalid = invalid: 0 to { $max }
 
 genome-race-unknown = unknown

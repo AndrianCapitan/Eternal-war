@@ -1,0 +1,5 @@
+# The world outside the field of view cone is dim (FieldOfViewComponent).
+- type: shader
+  id: EternalWarFieldOfView
+  kind: source
+  path: "/Textures/_EternalWar/Shaders/field_of_view.swsl"

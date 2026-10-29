@@ -6,6 +6,7 @@
     layers:
     # Torso
     - map: [ "enum.HumanoidVisualLayers.Chest" ]
+    - map: [ "enum.HumanoidVisualLayers.Breasts" ] # Eternal War: breast size markings, over the chest markings and under wounds
     - map: [ "enum.EternalWarHumanoidLayers.ExposedChest" ] # Eternal War: skin, bare muscles or bones of the zone
     - map: [ "enum.EternalWarHumanoidLayers.ExposedAbdomen" ] # Eternal War: skin, bare muscles or bones of the zone
 
@@ -35,6 +36,8 @@
     # Underwear & clothing
     - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
     - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
+    - map: [ "underwearBottom" ] # Eternal War: worn underwear (UnderwearSystem)
+    - map: [ "underwearTop" ] # Eternal War
     - map: ["jumpsuit"]
 
     # Extremities

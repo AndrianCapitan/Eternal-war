@@ -145,5 +145,17 @@ public sealed partial class BodyZonesSystem
                 _sprite.LayerSetVisible(sprite, pieceLayer, true);
             }
         }
+
+        // The breast size marking is skin: it goes with the skin of the chest. Its layers lie between the Breasts
+        // layer and the chest piece; markings added later take the visibility of the Breasts layer.
+        if (_sprite.LayerMapTryGet(sprite, HumanoidVisualLayers.Breasts, out var breasts, false)
+            && _sprite.LayerMapTryGet(sprite, EternalWarHumanoidLayers.ExposedChest, out var exposedChest, false))
+        {
+            var skin = !IsMissing(ent.Comp, BodyZone.Chest) && GetExposure(ent.Comp, BodyZone.Chest) == 0;
+            for (var i = breasts; i < exposedChest; i++)
+            {
+                _sprite.LayerSetVisible(sprite, i, skin);
+            }
+        }
     }
 }

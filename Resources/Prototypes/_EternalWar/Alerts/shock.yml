@@ -1,0 +1,9 @@
+# Traumatic shock (TraumaticShockComponent).
+
+- type: alert
+  id: EternalWarShock
+  icons:
+  - sprite: /Textures/_EternalWar/Interface/Alerts/shock.rsi
+    state: shock
+  name: alerts-eternal-war-shock-name
+  description: alerts-eternal-war-shock-desc

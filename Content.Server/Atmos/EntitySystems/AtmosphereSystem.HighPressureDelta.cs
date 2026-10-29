@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server._EternalWar.Pressure;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Mobs.Components;
@@ -82,6 +83,9 @@ public sealed partial class AtmosphereSystem
 
             comp.LiftedByPressure = false;
 
+            // Eternal War: no longer flying, it doesn't hit people (PressureBreakageSystem).
+            RemComp<CarriedByWindComponent>(uid);
+
             if ((comp.TableLayerRemoved.Count > 0 || comp.RemovedRestitution.Count > 0)
                 && TryComp<FixturesComponent>(uid, out var fixtures))
             {
@@ -142,6 +146,9 @@ public sealed partial class AtmosphereSystem
 
         component.Accumulator = 0f;
         _activePressures.Add((uid, component));
+
+        // Eternal War: what the wind carries hits people and breaks against walls (PressureBreakageSystem).
+        EnsureComp<CarriedByWindComponent>(uid);
     }
 
     private void HighPressureMovements(Entity<GridAtmosphereComponent> gridAtmosphere, TileAtmosphere tile)
