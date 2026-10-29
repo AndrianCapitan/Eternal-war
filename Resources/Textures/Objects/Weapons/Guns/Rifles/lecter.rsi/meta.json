@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Original sprite by Emisse (GitHub), all altered sprites by https://github.com/august-sun. Magazine state sprites by RedBookcase on Github.",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

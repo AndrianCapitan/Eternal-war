@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from ParadiseSS13 at commit https://github.com/ParadiseSS13/Paradise/pull/19710/commits/6fb423d9045d43f04e47770bbf505770f2d7b75a, inhands by TiniestShark (github)",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

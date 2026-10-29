@@ -86,27 +86,27 @@
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/Insects/mothroach/displacement.rsi
             state: head
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/Insects/mothroach/displacement.rsi
             state: mask
       suitstorage:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/Insects/mothroach/displacement.rsi
             state: suitstorage
       eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/Insects/mothroach/displacement.rsi
             state: eyes
       neck:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/Insects/mothroach/displacement.rsi
             state: neck
   - type: Strippable

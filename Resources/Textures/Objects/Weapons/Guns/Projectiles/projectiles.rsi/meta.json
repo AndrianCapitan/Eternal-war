@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken and modified from cev-eris at https://github.com/discordia-space/CEV-Eris/tree/7ff8f28ea4de734f3cc3cb70f2d4e4b4263a988d, debug sprites by slarticodefast(GitHub), _xeno_fire sprites by august-sun(Github), xenoborg sprites recolored by Samuka-C (github). Makeshift by ketufaispikinut.",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

@@ -3,8 +3,8 @@
 	"license": "CC-BY-SA-3.0",
 	"copyright": "/tg/station, 'icons/obj/device.dmi' commit 2b8b045d, redrawn by Ubaser, inhands by TiniestShark (github).",
 	"size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
 	"states": [
       {

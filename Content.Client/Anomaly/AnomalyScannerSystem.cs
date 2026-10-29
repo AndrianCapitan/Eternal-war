@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.Anomaly;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -20,9 +21,6 @@ public sealed partial class AnomalyScannerSystem : SharedAnomalyScannerSystem
     private const float RedHue = RedHueDegrees / MaxHueDegrees;
 
 
-    // Just an array to initialize the pixels of a new OwnedTexture
-    private static readonly Rgba32[] EmptyTexture = new Rgba32[32*32];
-
     public override void Initialize()
     {
         base.Initialize();
@@ -40,6 +38,11 @@ public sealed partial class AnomalyScannerSystem : SharedAnomalyScannerSystem
         // Allocate the OwnedTexture
         ent.Comp.ScreenTexture = _clyde.CreateBlankTexture<Rgba32>(layer.PixelSize);
 
+        // Eternal War: the bar is set in art pixels, the screen texture has world texture resolution.
+        const int artScale = EyeManager.PixelsPerMeter / ArtPixels.PerMeter;
+        ent.Comp.Offset *= artScale;
+        ent.Comp.Size *= artScale;
+
         if (layer.PixelSize.X < ent.Comp.Offset.X + ent.Comp.Size.X ||
             layer.PixelSize.Y < ent.Comp.Offset.Y + ent.Comp.Size.Y)
         {
@@ -51,7 +54,7 @@ public sealed partial class AnomalyScannerSystem : SharedAnomalyScannerSystem
 
 
         // Initialize the texture
-        ent.Comp.ScreenTexture.SetSubImage((0, 0), layer.PixelSize, new ReadOnlySpan<Rgba32>(EmptyTexture));
+        ent.Comp.ScreenTexture.SetSubImage((0, 0), layer.PixelSize, new ReadOnlySpan<Rgba32>(new Rgba32[layer.PixelSize.X * layer.PixelSize.Y]));
 
         // Initialize bar drawing buffer
         ent.Comp.BarBuf = new Rgba32[ent.Comp.Size.X * ent.Comp.Size.Y];

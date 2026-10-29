@@ -1,8 +1,8 @@
 {
     "version": 1,
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from Frontier Station, created by Tem Armoff https://github.com/new-frontiers-14/frontier-station-14/pull/484/files, Inhand sprites by onesch",

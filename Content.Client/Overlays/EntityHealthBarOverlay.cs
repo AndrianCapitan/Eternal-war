@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client.StatusIcon;
 using Content.Client.UserInterface.Systems;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -104,10 +105,10 @@ public sealed class EntityHealthBarOverlay : Overlay
 
             handle.SetTransform(matty);
 
-            var yOffset = bounds.Height * EyeManager.PixelsPerMeter / 2 - 3f;
-            var widthOfMob = bounds.Width * EyeManager.PixelsPerMeter;
+            var yOffset = bounds.Height * ArtPixels.PerMeter / 2 - 3f;
+            var widthOfMob = bounds.Width * ArtPixels.PerMeter;
 
-            var position = new Vector2(sprite.Offset.X - widthOfMob / EyeManager.PixelsPerMeter / 2, sprite.Offset.Y + yOffset / EyeManager.PixelsPerMeter);
+            var position = new Vector2(sprite.Offset.X - widthOfMob / ArtPixels.PerMeter / 2, sprite.Offset.Y + yOffset / ArtPixels.PerMeter);
             var color = GetProgressColor(deathProgress.ratio, deathProgress.inCrit);
 
             // Hardcoded width of the progress bar because it doesn't match the texture.
@@ -116,15 +117,15 @@ public sealed class EntityHealthBarOverlay : Overlay
 
             var xProgress = (endX - startX) * deathProgress.ratio + startX;
 
-            var boxBackground = new Box2(new Vector2(startX, 0f) / EyeManager.PixelsPerMeter, new Vector2(endX, 3f) / EyeManager.PixelsPerMeter);
+            var boxBackground = new Box2(new Vector2(startX, 0f) / ArtPixels.PerMeter, new Vector2(endX, 3f) / ArtPixels.PerMeter);
             boxBackground = boxBackground.Translated(position);
             handle.DrawRect(boxBackground, Black.WithAlpha(192));
 
-            var boxMain = new Box2(new Vector2(startX, 0f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 3f) / EyeManager.PixelsPerMeter);
+            var boxMain = new Box2(new Vector2(startX, 0f) / ArtPixels.PerMeter, new Vector2(xProgress, 3f) / ArtPixels.PerMeter);
             boxMain = boxMain.Translated(position);
             handle.DrawRect(boxMain, color);
 
-            var pixelDarken = new Box2(new Vector2(startX, 2f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 3f) / EyeManager.PixelsPerMeter);
+            var pixelDarken = new Box2(new Vector2(startX, 2f) / ArtPixels.PerMeter, new Vector2(xProgress, 3f) / ArtPixels.PerMeter);
             pixelDarken = pixelDarken.Translated(position);
             handle.DrawRect(pixelDarken, Black.WithAlpha(128));
         }

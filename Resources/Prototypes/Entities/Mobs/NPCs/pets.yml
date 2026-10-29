@@ -30,17 +30,17 @@
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_head_displacement
       eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_eyes_displacement
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_mask_displacement
   - type: DamageStateVisuals
@@ -121,17 +121,17 @@
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: lisa_head_displacement
       eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_eyes_displacement
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_mask_displacement
 
@@ -362,12 +362,12 @@
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: mcgriff_head_displacement
       eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: mcgriff_eyes_displacement
   - type: DamageStateVisuals
@@ -836,7 +836,7 @@
     displacements:
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/Smile/smile_displacement.rsi
             state: head
   - type: MobThresholds

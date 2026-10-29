@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "tgstation at 3ddd840268e33bbcf316f242e6a972b84e6b773c, Inhand sprites by onesch",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

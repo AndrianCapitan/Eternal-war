@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from tgstation and modified by Velcroboy at https://github.com/tgstation/tgstation/commit/40d75cc340c63582fb66ce15bf75a36115f6bdaa",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

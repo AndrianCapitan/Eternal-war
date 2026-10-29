@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from Beestation at commit https://github.com/BeeStation/BeeStation-Hornet/commit/9a035f9365bcb74ac40fbe79c74c43c4c80cc1e4",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

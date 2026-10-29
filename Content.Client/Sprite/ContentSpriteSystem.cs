@@ -179,7 +179,9 @@ public sealed partial class ContentSpriteSystem : EntitySystem
 
                     handle.RenderInRenderTarget(queued.Texture, () =>
                     {
-                        handle.DrawEntity(result.Entity, result.Texture.Size / 2, Vector2.One, Angle.Zero,
+                        // Eternal War: export at full texture resolution, DrawEntity uses UI pixels per meter.
+                        handle.DrawEntity(result.Entity, result.Texture.Size / 2,
+                            Vector2.One * EyeManager.PixelsPerMeter / EyeManager.UIPixelsPerMeter, Angle.Zero,
                             overrideDirection: result.Direction);
                     }, Color.Transparent);
 

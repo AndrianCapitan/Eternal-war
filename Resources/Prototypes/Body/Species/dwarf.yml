@@ -9,67 +9,67 @@
     displacements:
       jumpsuit:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       outerClothing:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       suitstorage:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       id:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       belt:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       gloves:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       neck:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       back:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       ears:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       shoes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
   - type: InitialBody
@@ -97,12 +97,12 @@
   - type: Hands
     leftHandDisplacement:
       sizeMaps:
-        32:
+        64:
           sprite: Mobs/Species/Human/displacement.rsi
           state: dwarfism_hand_left
     rightHandDisplacement:
       sizeMaps:
-        32:
+        64:
           sprite: Mobs/Species/Human/displacement.rsi
           state: dwarfism_hand_right
   - type: HumanoidProfile
@@ -112,7 +112,7 @@
   id: Dwarfism
   displacement:
     sizeMaps:
-      32:
+      64:
         sprite: Mobs/Species/Human/displacement.rsi
         state: dwarfism
 
@@ -184,37 +184,37 @@
     markingsDisplacement:
       Chest:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       Tail:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       Overlay:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       TailOverlay:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       UndergarmentTop:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       UndergarmentBottom:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       Special:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -226,37 +226,37 @@
     markingsDisplacement:
       Head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       Hair:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       FacialHair:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       Snout:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       SnoutCover:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       HeadSide:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       HeadTop:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -268,7 +268,7 @@
     markingsDisplacement:
       LArm:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -280,7 +280,7 @@
     markingsDisplacement:
       RArm:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -292,7 +292,7 @@
     markingsDisplacement:
       RHand:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -304,7 +304,7 @@
     markingsDisplacement:
       LHand:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -316,7 +316,7 @@
     markingsDisplacement:
       LLeg:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -328,7 +328,7 @@
     markingsDisplacement:
       RLeg:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -340,7 +340,7 @@
     markingsDisplacement:
       LFoot:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -352,7 +352,7 @@
     markingsDisplacement:
       RFoot:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 
@@ -368,12 +368,12 @@
     markingsDisplacement:
       Eyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
       OverEyes:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
 

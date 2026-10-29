@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from https://github.com/tgstation/tgstation/pull/69318. Space sheep edits by Aleksh.",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

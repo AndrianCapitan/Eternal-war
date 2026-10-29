@@ -617,7 +617,7 @@
     displacements:
       ears:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Animals/parrot/displacement.rsi
             state: ears
   - type: InventorySlots
@@ -1072,22 +1072,22 @@
     displacements:
       belt:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_belt_displacement
       ears:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_belt_displacement
       head:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_head_displacement
       mask:
         sizeMaps:
-          32:
+          64:
             sprite: Mobs/Pets/displacements.rsi
             state: corgi_mask_displacement
   - type: InteractionPopup

@@ -68,6 +68,8 @@ namespace Content.Client.Viewport
         /// </summary>
         /// <remarks>
         ///     The actual viewport may have render scaling applied based on parameters.
+        ///     Eternal War: measured in <see cref="EyeManager.UIPixelsPerMeter"/>, so it shows
+        ///     <c>ViewportSize / UIPixelsPerMeter</c> tiles whatever the texture resolution is.
         /// </remarks>
         public Vector2i ViewportSize
         {
@@ -290,7 +292,10 @@ namespace Content.Client.Viewport
                     Filter = StretchMode == ScalingViewportStretchMode.Bilinear,
                 });
 
-            _viewport.RenderScale = new Vector2(renderScale, renderScale);
+            // Eternal War: the render target keeps ViewportSize * renderScale pixels, but the world inside it is drawn
+            // at PixelsPerMeter instead of UIPixelsPerMeter, so at render scale 2 every screen pixel gets its own texel.
+            var worldScale = renderScale * (float) EyeManager.UIPixelsPerMeter / EyeManager.PixelsPerMeter;
+            _viewport.RenderScale = new Vector2(worldScale, worldScale);
 
             _viewport.Eye = _eye;
         }

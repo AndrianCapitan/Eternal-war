@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.DoAfter;
 using Content.Client.UserInterface.Systems;
 using Robust.Client.GameObjects;
@@ -170,7 +171,7 @@ public sealed class DoAfterOverlay : Overlay
                 }
 
                 var xProgress = (EndX - StartX) * elapsedRatio + StartX;
-                var box = new Box2(new Vector2(StartX, 3f) / EyeManager.PixelsPerMeter, new Vector2(xProgress, 4f) / EyeManager.PixelsPerMeter);
+                var box = new Box2(new Vector2(StartX, 3f) / ArtPixels.PerMeter, new Vector2(xProgress, 4f) / ArtPixels.PerMeter);
                 box = box.Translated(position);
                 handle.DrawRect(box, color);
                 offset += _barTexture.Height / scale;

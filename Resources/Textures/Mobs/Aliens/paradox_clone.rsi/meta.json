@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "preview combined from Mobs/Species/Human/parts.rsi, Clothing/Uniforms/Jumpsuits/Service/janitor.rsi, Clothing/Shoes/Specific/galoshes.rsi, Clothing/Belt/janitor.rsi, Clothing/Hands/Gloves/janitor.rsi and Clothing/Head/Soft/purplesoft.rsi by slarticodefast, paradox made by ps3moira (github)",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

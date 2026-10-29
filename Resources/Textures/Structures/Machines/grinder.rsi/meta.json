@@ -3,8 +3,8 @@
     "copyright":"https://github.com/tgstation/tgstation/commit/59f2a4e10e5ba36033c9734ddebfbbdc6157472d",
     "version":1,
     "size":{
-        "x":32,
-        "y":32
+        "x":64,
+        "y":64
     },
     "states":[
         {

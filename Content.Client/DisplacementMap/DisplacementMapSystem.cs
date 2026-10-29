@@ -68,14 +68,14 @@ public sealed partial class DisplacementMapSystem : EntitySystem
             };
         }
 
-        if (!data.SizeMaps.ContainsKey(32))
+        if (!data.SizeMaps.ContainsKey(EyeManager.PixelsPerMeter))
         {
-            Log.Error($"DISPLACEMENT: {displacementKey} don't have 32x32 default displacement map");
+            Log.Error($"DISPLACEMENT: {displacementKey} don't have {EyeManager.PixelsPerMeter}x{EyeManager.PixelsPerMeter} default displacement map");
             return false;
         }
 
         // We choose a displacement map from the possible ones, matching the size with the original layer size.
-        // If there is no such a map, we use a standard 32 by 32 one
+        // If there is no such a map, we use a standard PixelsPerMeter by PixelsPerMeter one
         var displacementDataLayer = data.SizeMaps[EyeManager.PixelsPerMeter];
         var actualRSI = _sprite.LayerGetEffectiveRsi(sprite.AsNullable(), index);
         if (actualRSI is not null)

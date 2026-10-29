@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.Alert.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -55,7 +56,7 @@ public sealed partial class GenericCounterAlertSystem : EntitySystem
         }
 
         // ReSharper disable once PossibleLossOfFraction
-        var baseOffset = (ent.Comp.AlertSize.X - digitCount * ent.Comp.GlyphWidth) / 2 * (1f / EyeManager.PixelsPerMeter);
+        var baseOffset = (ent.Comp.AlertSize.X - digitCount * ent.Comp.GlyphWidth) / 2 * (1f / ArtPixels.PerMeter);
 
         for (var i = 0; i < ent.Comp.DigitKeys.Count; i++)
         {
@@ -67,7 +68,7 @@ public sealed partial class GenericCounterAlertSystem : EntitySystem
 
             if (ent.Comp.CenterGlyph)
             {
-                var offset = baseOffset + (digitCount - 1 - i) * ent.Comp.GlyphWidth * (1f / EyeManager.PixelsPerMeter);
+                var offset = baseOffset + (digitCount - 1 - i) * ent.Comp.GlyphWidth * (1f / ArtPixels.PerMeter);
                 _sprite.LayerSetOffset(ent.Owner, layer, new Vector2(offset, 0));
             }
         }

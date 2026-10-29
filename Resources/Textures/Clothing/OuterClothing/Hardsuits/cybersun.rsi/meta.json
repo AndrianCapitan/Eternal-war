@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Sprite made by Gtheglorious based on the sprite made by emisse for ss14, vox state made by Flareguy for SS14, monkey state made by MercerBray for Ss14, Tail sprites by Tiniest Shark (github).",
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "states": [
         {

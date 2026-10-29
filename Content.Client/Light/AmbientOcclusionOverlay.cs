@@ -2,6 +2,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using Content.Client.Graphics;
 using Content.Client.Light.EntitySystems;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.CCVar;
 using Content.Shared.Light.Components;
 using Robust.Shared.ComponentTrees;
@@ -79,7 +80,7 @@ public sealed partial class AmbientOcclusionOverlay : Overlay
         var lightScale = aoSize / (Vector2) viewport.Size;
         var scale = viewport.RenderScale / (Vector2.One / lightScale);
         var expandedBounds = worldBounds.Enlarged(GetBlurMargin(viewport, distance));
-        var polygonExpansion = distance / EyeManager.PixelsPerMeter;
+        var polygonExpansion = distance / ArtPixels.PerMeter;
 
         var res = _resources.GetForViewport(args.Viewport, static _ => new CachedResources());
 
@@ -137,12 +138,12 @@ public sealed partial class AmbientOcclusionOverlay : Overlay
     private static float GetBlurMargin(IClydeViewport viewport, float distance)
     {
         if (viewport.Eye == null)
-            return distance / EyeManager.PixelsPerMeter;
+            return distance / ArtPixels.PerMeter;
 
         var cameraSize = viewport.Eye.Zoom.Y * viewport.Size.Y * (1 / viewport.RenderScale.Y) / EyeManager.PixelsPerMeter;
 
         // Matches Clyde's BlurRenderTarget radius calculation closely enough to include off-screen AO contributors.
-        return distance / EyeManager.PixelsPerMeter + BlurMultiplier / cameraSize;
+        return distance / ArtPixels.PerMeter + BlurMultiplier / cameraSize;
     }
 
     protected override void DisposeBehavior()

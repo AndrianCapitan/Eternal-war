@@ -1,8 +1,8 @@
 {
   "version": 1,
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "license": "CC-BY-SA-3.0",
   "copyright": "Modified from anomalyscanner.rsi (at commit d0352e734d97f3762f2e9082ea61bd2f83101874) by Samuka-C (github)",

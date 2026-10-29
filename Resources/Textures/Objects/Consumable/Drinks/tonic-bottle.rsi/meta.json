@@ -1,8 +1,8 @@
 {
     "version": 1,
     "size": {
-        "x": 32,
-        "y": 32
+        "x": 64,
+        "y": 64
     },
     "license": "CC-BY-SA-3.0",
     "copyright": "modified from space-up_bottle.rsi and inspired by tonic.rsi by Prole0 (GitHub), inhands by TiniestShark (github)",

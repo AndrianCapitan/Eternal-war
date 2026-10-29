@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Client._EternalWar.Graphics;
 using Content.Shared.Salvage;
 using Robust.Client.Graphics;
 using Robust.Shared.Utility;
@@ -56,6 +57,8 @@ public sealed partial class StencilOverlay
 
         // Draw the rain
         worldHandle.UseShader(_protoManager.Index(StencilDraw).Instance());
-        _parallax.DrawParallax(worldHandle, worldAABB, sprite, curTime, position, new Vector2(0.5f, 0f));
+        // Parallax textures keep art pixels, scale them up to world textures.
+        _parallax.DrawParallax(worldHandle, worldAABB, sprite, curTime, position, new Vector2(0.5f, 0f),
+            scale: (float) EyeManager.PixelsPerMeter / ArtPixels.PerMeter);
     }
 }

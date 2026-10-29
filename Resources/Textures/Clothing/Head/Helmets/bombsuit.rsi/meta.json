@@ -3,8 +3,8 @@
   "license": "CC-BY-SA-3.0",
   "copyright": "Taken from cev-eris at commit https://github.com/discordia-space/CEV-Eris/commit/a75dee2e6d236612dbd403dd5f8687ca930c01f1. Vox state by Flareguy for SS14",
   "size": {
-    "x": 32,
-    "y": 32
+    "x": 64,
+    "y": 64
   },
   "states": [
     {

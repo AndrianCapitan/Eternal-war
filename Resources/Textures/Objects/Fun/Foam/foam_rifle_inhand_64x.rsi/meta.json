@@ -3,8 +3,8 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Taken from  at commit https://github.com/tgstation/tgstation/commit/f01de25493e2bd2706ef9b0303cb0d7b5e3e471b sprite created from foam force poster by IProduceWidgets (github)",
     "size": {
-        "x": 64,
-        "y": 64
+        "x": 128,
+        "y": 128
     },
     "states": [
         {
