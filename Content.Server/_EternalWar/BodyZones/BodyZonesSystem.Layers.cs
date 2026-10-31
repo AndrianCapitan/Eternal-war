@@ -145,6 +145,16 @@ public sealed partial class BodyZonesSystem
     /// <returns>The damage the layer couldn't take, to go deeper.</returns>
     private float DamageLayer(Entity<BodyZonesComponent> ent, BodyZone zone, TissueLayer layer, float amount)
     {
+        // Old bones break easier; what they don't take goes on at its real size.
+        var fragility = layer == TissueLayer.Bone ? _aging.GetBoneFragility(ent) : 1f;
+        if (fragility != 1f)
+            return DamageLayerPieces(ent, zone, layer, amount * fragility) / fragility;
+
+        return DamageLayerPieces(ent, zone, layer, amount);
+    }
+
+    private float DamageLayerPieces(Entity<BodyZonesComponent> ent, BodyZone zone, TissueLayer layer, float amount)
+    {
         var pieces = GetLayer(ent, zone, layer);
         while (amount > 0f && pieces.Count > 0)
         {
@@ -441,7 +451,7 @@ public sealed partial class BodyZonesSystem
             if (!bone.Splinted || organ.Body is not { } body || !TryComp<BodyZonesComponent>(body, out var zones))
                 continue;
 
-            var rate = zones.SplintHealRate * dt;
+            var rate = zones.SplintHealRate * _aging.GetHealing(body) * dt;
             health.Damage = MathF.Max(0f, health.Damage - rate);
             if (health.Damage <= 0f)
                 bone.Splinted = false;

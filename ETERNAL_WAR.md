@@ -23,8 +23,10 @@
 15. [Нижнее бельё](#15-нижнее-бельё)
 16. [Давление: вещи ломаются, тело страдает](#16-давление-вещи-ломаются-тело-страдает)
 17. [Текстуры 64 пикселя на метр](#17-текстуры-64-пикселя-на-метр)
-18. [Тесты](#18-тесты)
-19. [Слияние с апстримом](#19-слияние-с-апстримом)
+18. [Коляска сбивает с ног](#18-коляска-сбивает-с-ног)
+19. [Старение и излучатель времени](#19-старение-и-излучатель-времени)
+20. [Тесты](#20-тесты)
+21. [Слияние с апстримом](#21-слияние-с-апстримом)
 
 ---
 
@@ -1805,7 +1807,88 @@ python Tools/_EternalWar/upscale_textures.py --dry-run --only Objects/Tools
 
 ---
 
-## 18. Тесты
+## 18. Коляска сбивает с ног
+
+Человек в инвалидной коляске, въехавший на ходу в стоящего человека, сбивает его с ног на 2 с
+(вещи из рук выпадают, встаёт сам). Раньше коляска просто упиралась в человека.
+
+- `Content.Server/_EternalWar/Vehicles/VehicleRam{Component,System}.cs` — на `StartCollideEvent`
+  коляски: нужен водитель (`VehicleComponent.Operator`), цель стоит (`StandingState`, не лежит и
+  не пристёгнута) и коляска едет **к ней** не медленнее `minSpeed` (1.5 м/с; считается проекция
+  скорости коляски на направление к цели). Поэтому пустая коляска, человек, который сам в неё
+  вошёл, или касание вскользь никого не валят. Звук — `MetalThud`, всплывающий текст —
+  `Resources/Locale/*/_EternalWar/vehicles.ftl`.
+- Коляска разгоняется до полной скорости (2 м/с) почти мгновенно, так что «разбег» не нужен:
+  любой въезд на ходу валит. Лежащего коляска не сбивает повторно — она через него проезжает
+  (у лежащего меняются слои столкновений).
+- Компонент `VehicleRam` есть только у `VehicleWheelchair` (и сложенной). Уборочной тележке и
+  другому транспорту — добавить тот же компонент.
+
+Для игроков — `Wiki/Анатомия человека.md`, раздел 23: обновлять вместе с кодом.
+
+---
+
+## 19. Старение и излучатель времени
+
+Админское оружие **излучатель времени** (`EternalWarWeaponTimeRay`) стреляет лучом, который
+старит человека на 10 лет за попадание. Возраст бьёт по телу: старый человек медленнее, быстрее
+выдыхается, у него хрупкие кости и медленно заживают раны. Состаренный до 120 лет умирает от
+старости: сначала отказывает сердце, потом мозг, реанимировать нельзя.
+
+| Возраст | Скорость | Выносливость (порог падения) | Урон костям | Заживление и срастание |
+|---|---|---|---|---|
+| до 60 | ×1 | ×1 | ×1 | ×1 |
+| 60–79 («старый») | ×0.85 | ×0.8 | ×1.25 | ×0.75 |
+| 80+ («дряхлый») | ×0.7 | ×0.6 | ×1.5 | ×0.5 |
+
+- Возраст — это `HumanoidProfileComponent.Age` из профиля персонажа. Таблица действует на любой
+  возраст, в том числе на персонажа, которого игрок сделал старым в редакторе. А седина, бледность
+  и смерть от старости бывают только у состаренного (`AgingComponent.OriginalAge` задан): персонаж,
+  созданный 120-летним (максимум редактора), дряхлый, но не умирает.
+- Внешность: волосы и борода седеют от возраста, с которого начали старить (но не раньше 40),
+  до полностью седых (`#D6D6D2`) к 90; кожа к 90 теряет 30% насыщенности. Исходные цвета
+  запоминаются при первом попадании.
+- При осмотре дряхлого (80+) — «дряхлый старик», умирающего — «жизнь уходит от старости».
+- Смерть: при 120 годах раз в секунду 2 урона получает первый ещё работающий орган из
+  `FailingOrgans` (сердце — 25 HP, затем мозг — 40 HP). Отказ сердца — удушье мозга (раздел 5,
+  «Кровообращение»), отказ мозга — смерть без реанимации. Пересаженное сердце тоже откажет.
+  Если отказывать нечему, тело просто умирает и получает `Unrevivable`.
+- Защита: каждая вещь с `AgingProtection` на теле или в руках умножает годы на свой коэффициент.
+  **Хроностабилизирующий жилет** (`EternalWarClothingOuterChronoVest`, спрайт отражающего жилета,
+  но не отражает) — ×0.5, то есть 5 лет за попадание. Доли лет копятся (`PendingYears`).
+  Отражающий жилет (`Reflect` с `Energy`) отражает и луч времени.
+- Админское «Исцелить» возвращает исходный возраст и внешность, снимает `Unrevivable`, если его
+  поставила старость. Отказавшие органы восстанавливает система зон тела.
+- Излучатель: аккумулятор на 10 выстрелов, сам заряжается (20 ед./с). Ни рецепта, ни лута — только
+  спавн админом. Спрайт — ретро-лазер, перекрашенный в голубой; луч — `beam_omni`.
+
+Код:
+
+- `Content.Shared/_EternalWar/Aging/` — `AgingComponent` (пороги и множители, состояние),
+  `AgingProtectionComponent`, `HitscanAgingComponent`, `SharedAgingSystem` (стадии, скорость через
+  `RefreshMovementSpeedModifiersEvent`, выносливость через `RefreshStaminaCritThresholdEvent`,
+  осмотр, `GetBoneFragility`, `GetHealing`). Стадию `Dying` знает только сервер.
+- `Content.Server/_EternalWar/Aging/AgingSystem.cs` — попадание (`HitscanRaycastFiredEvent`),
+  `AddYears`, седина (`ApplyProfiles` + `ApplyMarkings`, как в генетике), медленное самолечение,
+  отказ органов, «Исцелить».
+- `BodyZonesSystem.Layers.cs`: урон слою костей умножается на `GetBoneFragility`, шина
+  сращивает кость со скоростью `SplintHealRate × GetHealing`.
+- Самолечение (`PassiveDamage`) замедляется увеличением интервала (1 с → 1.33 с → 2 с), а не
+  уменьшением количества: 0.05 × 0.75 округлялось бы до 0.03.
+- Смена возраста — событие `AgeChangedEvent` (из `ApplyProfileTo` и нового
+  `HumanoidProfileSystem.SetAge`).
+- Тексты — `Resources/Locale/*/_EternalWar/aging.ftl`, прототипы —
+  `Resources/Prototypes/_EternalWar/Entities/Objects/Weapons/Guns/time_ray.yml` и
+  `.../Entities/Clothing/aging_protection.yml`.
+
+Чего пока нет: морщин на спрайте, старения со временем раунда, обратного (омолаживающего) луча.
+Если после старения отредактировать геном, генетика вернёт волосам цвет из генома.
+
+Для игроков — `Wiki/Анатомия человека.md`, раздел 24: обновлять вместе с кодом.
+
+---
+
+## 20. Тесты
 
 `Content.IntegrationTests/Tests/Atmos/SpaceWindTest.cs` — сценарий пробоины:
 
@@ -1871,6 +1954,12 @@ dotnet test Content.IntegrationTests --filter "FullyQualifiedName~Tests._Eternal
 # давление: ёмкости, электроника, удары, осколки, уши, лёгкие, кессонная болезнь
 dotnet test Content.IntegrationTests --filter "FullyQualifiedName~_EternalWar.PressureTest"
 
+# коляска сбивает с ног
+dotnet test Content.IntegrationTests --filter "FullyQualifiedName~VehicleRamTest"
+
+# старение и излучатель времени
+dotnet test Content.IntegrationTests --filter "FullyQualifiedName~_EternalWar.AgingTest"
+
 # проверка прототипов и локализации
 dotnet run --project Content.YAMLLinter
 ```
@@ -1894,6 +1983,22 @@ dotnet run --project Content.YAMLLinter
 
 Апстримный `RiggableTest.RigActivatedTest` ждёт 1.5 яда на теле, поэтому в нём обезвреживание
 выключено (`Detox.Clear()`).
+
+`VehicleRamTest` (на тестовом гриде включается гравитация — в невесомости коляска не едет):
+
+- `RammingKnocksDown` — игрок в коляске едет на восток 1.5 с в человека в 2 м: тот сбит с ног;
+- `WalkingIntoEmptyChairDoesNot` — игрок сам идёт в пустую коляску и не падает.
+
+`AgingTest`:
+
+- `TimeRayAgesTenYearsAndGreysTheHair` — настоящий выстрел: 30 → 40, рыжие волосы ещё рыжие;
+  ещё два — 60, волосы ближе к седым; «Исцелить» — снова 30 и рыжие;
+- `VestTakesHalfTheYears` — в хроностабилизирующем жилете выстрел даёт 5 лет;
+- `OldBodyIsSlowerWeakerAndHealsSlower` — в 65 и 85 скорость, порог выносливости, хрупкость
+  костей, заживление и интервал самолечения по таблице; 120 через `SetAge` (как из редактора) —
+  не умирает; в 30 всё обычное;
+- `AgedTo120TheHeartThenTheBrainGiveOut` — состарен на 90 лет: при ускоренном отказе (20/с)
+  сначала только сердце, потом мозг, смерть и `Unrevivable`; «Исцелить» — жив, 30 лет.
 
 `TraumaticShockTest` (на тестовом гриде включается гравитация — в невесомости никто не падает):
 
@@ -2023,6 +2128,16 @@ dotnet run --project Content.YAMLLinter
 > Перед сборкой закройте запущенные сервер и клиент — иначе `dotnet` не сможет
 > перезаписать DLL в `bin/`, а тесты молча запустятся на старой сборке.
 
+> Пул тестов сам выключается примерно через 20 минут прогона («Tests are taking too long. Shutting
+> down all tests»), после этого все остальные тесты падают в `SetUp` с «Pool manager has not been
+> initialized» — это не ошибки кода. На машине с 8 ГБ памяти гоняйте тесты частями (по папкам).
+> Снятый прогон может оставить процесс `testhost` на 4–5 ГБ — завершите его
+> (`taskkill /IM testhost.exe /F`).
+> Изредка тестовый сервер не стартует: движок падает в многопоточной загрузке прототипов
+> (`KeyNotFoundException` или `ArgumentNullException` в `PrototypeManager`), и все тесты порции
+> падают в `SetUp`/`get_TestMap`. Это гонка в апстримном движке, а не ошибка прототипов: повторный
+> запуск проходит.
+
 > **«Пропущен» — это провал.** Если тест показан как пропущенный с сообщением
 > «Test was dirty-disposed», на самом деле он упал: фикстура выбрасывает пару сервер/клиент,
 > и предупреждение об этом затирает исходную ошибку. Чтобы её увидеть, временно переопределите
@@ -2034,7 +2149,7 @@ dotnet run --project Content.YAMLLinter
 
 ---
 
-## 19. Слияние с апстримом
+## 21. Слияние с апстримом
 
 Файлы апстрима, которые изменены в форке. При конфликтах смотреть сюда:
 
@@ -2095,6 +2210,7 @@ dotnet run --project Content.YAMLLinter
 | `Resources/Prototypes/Body/Species/human.yml` (снова) | Компонент `TraumaticShock` у `MobHuman` (раздел 12) |
 | `Resources/Prototypes/Body/Species/human.yml` (снова) | `FieldOfView` и `CombatMode` с `toggleMouseRotator: false` у `MobHuman` (раздел 13) |
 | `Content.IntegrationTests/Tests/Chemistry/RiggableTest.cs` | `Detox.Clear()` — иначе печень и почки обезвредят яд, который ждёт тест |
+| `Content.IntegrationTests/Tests/Damageable/DamageAllPrototypes.cs` | Перед уроном у мобов с `OrganFunctions` очищаются `Detox` и `DetoxBudget` — иначе печень съедает 0.01 яда и тест падает |
 | `Resources/Prototypes/Body/Species/human.yml` (снова) | Компонент `BreastSize` у `MobHuman`; слой `Breasts` в `markingData` у `OrganHumanTorso`; лимит `Breasts` в группе `Human` (раздел 14) |
 | `Content.Shared/Humanoid/HumanoidVisualLayers.cs` | Значение `Breasts` в конце перечисления |
 | `Content.Shared/Humanoid/HumanoidVisualLayersExtension.cs` | `Breasts` в `Sublayers(Chest)` |
@@ -2121,6 +2237,9 @@ dotnet run --project Content.YAMLLinter
 | `Resources/Prototypes/Shaders/displacement.yml` | `displacementSize: 254` |
 | `Resources/Prototypes/Body/Species/*.yml`, `Entities/Mobs/NPCs/{animals,pets,scurret}.yml`, `Insects/mothroach.yml` | Ключ `sizeMaps` — `64` вместо `32` |
 | `Resources/Prototypes/Entities/Objects/Misc/identification_cards.yml` | `scale: 2, 2` у слоя иконки должности |
+| `Resources/Prototypes/Entities/Objects/Vehicles/vehicles.yml` | Компонент `VehicleRam` у `VehicleWheelchair` (раздел 18) |
+| `Content.Shared/Humanoid/HumanoidProfileSystem.cs` (снова) | Метод `SetAge`; событие `AgeChangedEvent` при смене возраста (и в `ApplyProfileTo`) (раздел 19) |
+| `Resources/Prototypes/Body/Species/human.yml` (снова) | Компонент `Aging` у `MobHuman` (раздел 19) |
 
 Только форку принадлежат (конфликтов не будет):
 

@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Body.Systems;
+using Content.Shared._EternalWar.Aging;
 using Content.Shared._EternalWar.BodyZones;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body;
@@ -33,6 +34,7 @@ public sealed partial class BodyZonesSystem : SharedBodyZonesSystem
 {
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private SharedAgingSystem _aging = default!;
     [Dependency] private BlindableSystem _blindable = default!;
     [Dependency] private BlurryVisionSystem _blurryVision = default!;
     [Dependency] private BloodstreamSystem _bloodstream = default!;

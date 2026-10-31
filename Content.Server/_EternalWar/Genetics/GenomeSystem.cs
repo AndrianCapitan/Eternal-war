@@ -115,7 +115,7 @@ public sealed partial class GenomeSystem : EntitySystem
         return blocks;
     }
 
-    private static Color? FirstMarkingColor(
+    internal static Color? FirstMarkingColor(
         Dictionary<ProtoId<OrganCategoryPrototype>, Dictionary<HumanoidVisualLayers, List<Marking>>> applied,
         HumanoidVisualLayers layer)
     {

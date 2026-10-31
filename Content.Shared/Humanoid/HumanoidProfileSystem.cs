@@ -26,6 +26,7 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
             return;
 
         var oldSex = ent.Comp.Sex; // Eternal War
+        var oldAge = ent.Comp.Age; // Eternal War
         ent.Comp.Gender = profile.Gender;
         ent.Comp.Age = profile.Age;
         ent.Comp.Species = profile.Species;
@@ -38,6 +39,13 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         {
             var sexChanged = new SexChangedEvent(oldSex, profile.Sex);
             RaiseLocalEvent(ent, ref sexChanged);
+        }
+
+        // Eternal War: an old body is weaker (AgingSystem).
+        if (oldAge != profile.Age)
+        {
+            var ageChanged = new AgeChangedEvent(oldAge, profile.Age);
+            RaiseLocalEvent(ent, ref ageChanged);
         }
 
         var voiceChanged = new VoiceChangedEvent(ent.Comp.Voice, profile.Voice);
@@ -76,6 +84,23 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
             var sexChanged = new SexChangedEvent(oldSex, sex);
             RaiseLocalEvent(ent, ref sexChanged);
         }
+    }
+
+    // Eternal War: the time ray ages in game.
+    /// <summary>
+    /// Changes the age of the humanoid.
+    /// </summary>
+    public void SetAge(Entity<HumanoidProfileComponent?> ent, int age)
+    {
+        if (!Resolve(ent, ref ent.Comp) || ent.Comp.Age == age)
+            return;
+
+        var oldAge = ent.Comp.Age;
+        ent.Comp.Age = age;
+        Dirty(ent);
+
+        var ageChanged = new AgeChangedEvent(oldAge, age);
+        RaiseLocalEvent(ent, ref ageChanged);
     }
 
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)

@@ -1,0 +1,48 @@
+# Eternal War: the time ray ages whoever it hits by 10 years (AgingSystem). Admins only: no recipe, no loot.
+
+- type: entity
+  parent: BasicHitscan
+  id: EternalWarTimeRayHitscan
+  name: time ray
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanAging
+    years: 10
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_omni
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_omni
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_omni
+
+- type: entity
+  parent: [ BaseWeaponBatterySmall, BaseMajorContraband ]
+  id: EternalWarWeaponTimeRay
+  name: time ray emitter
+  description: Fires a ray that makes time run faster for whoever it hits. Every hit takes ten years; at a hundred and twenty the heart gives out, then the brain.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
+    color: "#8FD8FF"
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    storedOffset: 0,-5
+  - type: BatteryAmmoProvider
+    proto: EternalWarTimeRayHitscan
+    fireCost: 100
+  - type: BatterySelfRecharger
+    autoRechargeRate: 20
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance

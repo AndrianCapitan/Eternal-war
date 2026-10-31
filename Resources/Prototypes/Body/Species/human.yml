@@ -153,6 +153,8 @@
       EternalWarBreastsLarge: breast-size-examine-large
       EternalWarBreastsVeryLarge: breast-size-examine-very-large
       EternalWarBreastsHuge: breast-size-examine-huge
+  # Eternal War: an old body is slower, weaker and frailer; aged to 120 by the time ray, it dies for good (AgingSystem).
+  - type: Aging
   - type: Butcherable
     spawned:
     - id: FoodMeatHuman

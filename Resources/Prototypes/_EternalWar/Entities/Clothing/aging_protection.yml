@@ -1,0 +1,14 @@
+# Eternal War: the time ray takes half the years from whoever wears this (AgingProtection). Admins only.
+
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: EternalWarClothingOuterChronoVest
+  name: chrono-stabilizing vest
+  description: An armored vest lined with a field that slows time down. The time ray takes half as many years from whoever wears it.
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: AgingProtection
+    coefficient: 0.5

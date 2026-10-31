@@ -49,7 +49,8 @@ public abstract partial class SharedBodyZonesSystem : EntitySystem
 
     private void OnSelectTargetZone(SelectTargetZoneEvent ev, EntitySessionEventArgs args)
     {
-        if (args.SenderSession.AttachedEntity is not { } user)
+        // The zone comes from the client: a modified one can send any byte.
+        if (args.SenderSession.AttachedEntity is not { } user || !Enum.IsDefined(ev.Zone))
             return;
 
         SetTarget(user, ev.Zone);

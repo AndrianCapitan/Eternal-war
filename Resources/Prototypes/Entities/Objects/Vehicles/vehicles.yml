@@ -78,6 +78,8 @@
         - TableLayer
   - type: StaticPrice
     price: 70
+  # Eternal War: rolling into someone at speed knocks them down.
+  - type: VehicleRam
 
 - type: entity
   parent: VehicleWheelchair
