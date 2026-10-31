@@ -1,6 +1,7 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._EternalWar.Hygiene;
 
@@ -8,7 +9,7 @@ namespace Content.Shared._EternalWar.Hygiene;
 /// A shower: turned on and off by hand. While it runs, everyone standing under it (on its tile) is washed:
 /// the blood comes off their clothes and things, their feet stop leaving prints and fire goes out.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ShowerComponent : Component
 {
     [DataField, AutoNetworkedField]
@@ -23,7 +24,7 @@ public sealed partial class ShowerComponent : Component
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
 
-    [DataField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextUpdate;
 
     [DataField]

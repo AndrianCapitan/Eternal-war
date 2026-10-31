@@ -14,10 +14,10 @@ namespace Content.Shared._EternalWar.Organs;
 /// between the liver and the intestines, the appendix clogs up, the spleen makes the blood.
 /// An organ that is gone or failed (OrganHealthComponent.Failed) does nothing.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class OrganFunctionsComponent : Component
 {
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan NextUpdate;
 
     [DataField]
@@ -186,7 +186,7 @@ public sealed partial class OrganFunctionsComponent : Component
     [DataField]
     public bool Appendicitis;
 
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan NextVomit;
 
     #endregion
@@ -203,7 +203,7 @@ public sealed partial class OrganFunctionsComponent : Component
     [DataField]
     public FixedPoint2? SpleenBloodRefresh;
 
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan NextSpleenUpdate;
 
     #endregion

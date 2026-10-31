@@ -1,6 +1,7 @@
 using Content.IntegrationTests.Fixtures;
 using Content.IntegrationTests.Fixtures.Attributes;
 using Content.IntegrationTests.Utility;
+using Content.Shared._EternalWar.Organs;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
@@ -42,6 +43,13 @@ public sealed class DamageAllPrototypesTest : GameTest
                     // Intentionally cannot take damage, ignore it.
                     if (SEntMan.HasComponent<GodmodeComponent>(entity))
                         continue;
+
+                    // Eternal War: the liver and kidneys would make the bit of poison this test deals harmless.
+                    if (SEntMan.TryGetComponent<OrganFunctionsComponent>(entity, out var organs))
+                    {
+                        organs.Detox.Clear();
+                        organs.DetoxBudget = 0f;
+                    }
 
                     var canBeDamaged = false;
 

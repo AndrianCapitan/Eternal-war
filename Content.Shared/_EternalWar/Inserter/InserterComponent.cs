@@ -8,7 +8,7 @@ namespace Content.Shared._EternalWar.Inserter;
 /// Works with the floor (and so with conveyors), crates and lockers, bags and boxes, and machines that take materials.
 /// Needs power.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class InserterComponent : Component
 {
     /// <summary>
@@ -32,7 +32,7 @@ public sealed partial class InserterComponent : Component
     [ViewVariables]
     public InserterState State = InserterState.AtSource;
 
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan NextAction;
 }
 

@@ -6,7 +6,7 @@ namespace Content.Shared._EternalWar.Movement;
 /// Running (holding the run key, Shift by default) costs stamina, a little food and more water.
 /// Out of breath, the mob can only walk until its stamina comes back.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 public sealed partial class SprintCostComponent : Component
 {
     /// <summary>
@@ -51,6 +51,6 @@ public sealed partial class SprintCostComponent : Component
     [ViewVariables]
     public float RunTime;
 
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan NextUpdate;
 }

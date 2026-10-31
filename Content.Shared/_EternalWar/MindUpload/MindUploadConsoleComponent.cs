@@ -5,7 +5,7 @@ namespace Content.Shared._EternalWar.MindUpload;
 /// <summary>
 /// Console that copies a mind from a brain or a personal AI into a switched off positronic brain.
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class MindUploadConsoleComponent : Component
 {
     /// <summary>
@@ -44,12 +44,12 @@ public sealed partial class MindUploadConsoleComponent : Component
     /// <summary>
     /// When the current upload started. Null if nothing is being uploaded.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan? UploadStart;
 
     /// <summary>
     /// When the current upload will finish. Null if nothing is being uploaded.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoPausedField]
     public TimeSpan? UploadEnd;
 }

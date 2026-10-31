@@ -19,7 +19,11 @@
           False: { state: shower }
   - type: Shower
   - type: InteractionOutline
-  # Stood under, not walked around.
+  # Stood under, not walked around. Without fixtures the engine turns collision off on spawn anyway;
+  # saying so here keeps the prototype the same as a spawned shower (PrototypeSaveTest).
+  - type: Physics
+    bodyType: Static
+    canCollide: false
   - type: Fixtures
     fixtures: {}
   - type: AmbientSound

@@ -3,6 +3,7 @@ using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared._EternalWar.BodyZones;
 
@@ -14,7 +15,7 @@ namespace Content.Shared._EternalWar.BodyZones;
 /// reserve, goes numb and, if it stays without blood long enough, dies.
 /// The brain is in the head: when it runs out of oxygen the body suffocates.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), AutoGenerateComponentPause]
 public sealed partial class CirculationComponent : Component
 {
     /// <summary>
@@ -23,7 +24,7 @@ public sealed partial class CirculationComponent : Component
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(1);
 
-    [DataField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextUpdate;
 
     /// <summary>
@@ -94,7 +95,7 @@ public sealed partial class CirculationComponent : Component
     [DataField]
     public TimeSpan FountainPopupInterval = TimeSpan.FromSeconds(5);
 
-    [DataField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextFountainPopup;
 
     /// <summary>
